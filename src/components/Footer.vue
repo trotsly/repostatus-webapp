@@ -31,7 +31,6 @@ export default {
 #footer {
   .footer-container {
     margin-top: 5em;
-    //border-top: 1px solid $grey;
     display: flex;
     justify-content: space-between;
     padding-top: 2.5em;

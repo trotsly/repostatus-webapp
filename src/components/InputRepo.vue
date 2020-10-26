@@ -2,12 +2,14 @@
   <div id="input-repo">
     <div class="d-flex justify-content-center py-3 mt-3 mb-5">
       <div class="repo-chooser">
-        <span>
-          <GithubIcon class="github-icon" size="25" />
-        </span>
-        <span class="repo-text">
-          <p>Choose GitHub Repo</p>
-        </span>
+        <div class="public-repo">
+          <span>
+            <PlusCircleIcon class="plus-icon" size="30" />
+          </span>
+          <span class="repo-text">
+            <p>Choose Public Repo</p>
+          </span>
+        </div>
       </div>
     </div>
     <div class="darker-background"></div>
@@ -15,12 +17,12 @@
 </template>
 
 <script>
-import { GithubIcon } from "vue-feather-icons";
+import { PlusCircleIcon } from "vue-feather-icons";
 
 export default {
   name: "InputRepo",
   components: {
-    GithubIcon
+    PlusCircleIcon
   }
 };
 </script>
@@ -30,28 +32,39 @@ export default {
   @extend .rounded-cust-sm;
   @extend .shadow-lg-green;
 
-  width: 350px;
+  width: 380px;
   background: $green;
   cursor: pointer;
   color: $black;
-  padding: 25px 10px;
+  padding: 25px 15px;
   display: flex;
-  justify-content: center;
   transition: 0.3s ease;
   z-index: 2;
 
   &:hover {
     background: darken($green, 10);
     transition: 0.3s ease;
+
+    .plus-icon {
+      stroke: darken($green, 10);
+      transition: 0.3s ease;
+    }
   }
 
-  .github-icon {
+  .public-repo {
+    display: flex;
+  }
+
+  .plus-icon {
     margin-right: 5px;
+    fill: $black;
+    stroke: $green;
+    transition: 0.3s ease;
   }
 
   .repo-text {
-    margin-left: 8px;
-    font-size: 1.1em;
+    margin-left: 5px;
+    font-size: 1.3em;
     font-weight: 500;
 
     p {
