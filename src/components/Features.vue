@@ -63,8 +63,18 @@ export default {
     display: flex;
     justify-content: space-evenly;
 
+    @media only screen and (max-width: 878px) {
+      flex-direction: column;
+      align-items: center;
+
+      .feature-block {
+        margin-top: 2em;
+      }
+    }
+
     .feature-block {
       max-width: 250px;
+
       .icon-container {
         color: $ming;
       }
