@@ -175,7 +175,6 @@ export default {
           padding: 10px 20px;
           display: flex;
           align-items: center;
-          transition: 0.2s ease;
 
           img {
             width: 30px;
