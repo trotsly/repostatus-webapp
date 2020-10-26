@@ -57,7 +57,6 @@ export default {
   background: $green;
   cursor: pointer;
   color: $black;
-  padding: 0px 15px;
   display: flex;
   justify-content: space-between;
   transition: 0.3s ease;
@@ -83,6 +82,7 @@ export default {
 
   .public-repo {
     display: flex;
+    padding-left: 15px;
 
     .plus-icon {
       margin-right: 5px;
@@ -103,6 +103,9 @@ export default {
   }
 
   .dropdown-container {
+    padding-left: 15px;
+    padding-right: 15px;
+
     .dropdown-icon {
       @extend .animation-basic;
       animation-name: rotateBackward;
@@ -159,7 +162,7 @@ export default {
 
       position: absolute;
       top: 100%;
-      right: -15px;
+      right: 0;
       z-index: 6;
       min-width: 350px;
       visibility: hidden;
