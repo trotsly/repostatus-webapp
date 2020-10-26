@@ -13,7 +13,20 @@
         <div class="dropdown-container">
           <ChevronDownIcon size="30" class="dropdown-icon" />
           <div class="dropdown-content">
-            <div class="dropdown-content-child shadow-lg"></div>
+            <div class="dropdown-content-child shadow-lg">
+              <div class="extra-option">
+                <img src="@/assets/github_icon.png" alt="" />
+                <div class="option-text">
+                  GitHub
+                </div>
+              </div>
+              <div class="extra-option">
+                <LinkIcon />
+                <div class="option-text">
+                  Enter Link
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -23,13 +36,14 @@
 </template>
 
 <script>
-import { PlusCircleIcon, ChevronDownIcon } from "vue-feather-icons";
+import { PlusCircleIcon, ChevronDownIcon, LinkIcon } from "vue-feather-icons";
 
 export default {
   name: "InputRepo",
   components: {
     PlusCircleIcon,
-    ChevronDownIcon
+    ChevronDownIcon,
+    LinkIcon
   }
 };
 </script>
@@ -146,17 +160,45 @@ export default {
       position: absolute;
       top: 100%;
       right: -15px;
-      width: 100%;
       z-index: 6;
       min-width: 350px;
       visibility: hidden;
+      animation-duration: 0.1s;
 
       .dropdown-content-child {
         @extend .rounded-cust-sm;
 
         margin-top: 10px;
         width: 100%;
-        height: 100px;
+
+        .extra-option {
+          padding: 10px 20px;
+          display: flex;
+          align-items: center;
+          transition: 0.2s ease;
+
+          img {
+            width: 30px;
+            height: auto;
+          }
+
+          .option-text {
+            font-size: 1.3em;
+            margin-left: 20px;
+          }
+
+          &:hover {
+            background: darken($white, 3);
+            transition: 0.2s ease;
+          }
+        }
+
+        .extra-option:nth-child(1) {
+          @extend .rounded-cust-sm-t;
+        }
+        .extra-option:last-child {
+          @extend .rounded-cust-sm-b;
+        }
       }
     }
   }

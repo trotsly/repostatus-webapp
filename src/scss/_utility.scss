@@ -20,6 +20,15 @@
     border-radius: 5px;
 }
 
+.rounded-cust-sm-t {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.rounded-cust-sm-b {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 // Animation
 
 .animation-basic {
