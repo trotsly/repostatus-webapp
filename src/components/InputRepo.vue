@@ -10,6 +10,7 @@
         </span>
       </div>
     </div>
+    <div class="darker-background"></div>
   </div>
 </template>
 
@@ -37,6 +38,7 @@ export default {
   display: flex;
   justify-content: center;
   transition: 0.3s ease;
+  z-index: 2;
 
   &:hover {
     background: darken($green, 10);
@@ -55,6 +57,22 @@ export default {
     p {
       margin: 0 auto;
     }
+  }
+}
+
+#input-repo {
+  position: relative;
+  width: 100%;
+  background: darken($white, 1);
+
+  .darker-background {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    height: 65%;
+    width: 98%;
+    background: $white;
+    transform: rotate(-3deg);
   }
 }
 </style>
