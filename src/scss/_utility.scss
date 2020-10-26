@@ -1,0 +1,21 @@
+// Shadow
+
+.shadow-lg-cust {
+    box-shadow: 0 19px 32px lighten(#000, 80), 0 15px 18px lighten(#000, 85);
+}
+
+.shadow-lg-green {
+    -webkit-box-shadow: 0px -4px 49px 1px rgba(148,205,199,1);
+    -moz-box-shadow: 0px -4px 49px 1px rgba(148,205,199,1);
+    box-shadow: 0px -4px 49px 1px rgba(148,205,199,1);
+}
+
+// Rounded
+
+.rounded-cust {
+    border-radius: 7px;
+}
+
+.rounded-cust-sm {
+    border-radius: 5px;
+}
