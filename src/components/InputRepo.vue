@@ -40,7 +40,7 @@ export default {
   background: $green;
   cursor: pointer;
   color: $black;
-  padding: 25px 15px;
+  padding: 0px 15px;
   display: flex;
   justify-content: space-between;
   transition: 0.3s ease;
@@ -50,10 +50,18 @@ export default {
     background: darken($green, 10);
     transition: 0.3s ease;
 
-    .plus-icon {
-      stroke: darken($green, 10);
-      transition: 0.3s ease;
+    .public-repo {
+      .plus-icon {
+        stroke: darken($green, 10);
+        transition: 0.3s ease;
+      }
     }
+  }
+
+  .public-repo,
+  .dropdown-container {
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 
   .public-repo {
@@ -82,8 +90,10 @@ export default {
       animation-duration: 0.3s;
       animation-fill-mode: both;
       animation-name: rotateBackward;
+    }
 
-      &:hover {
+    &:hover {
+      .dropdown-icon {
         animation-name: rotateForward;
       }
     }
