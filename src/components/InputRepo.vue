@@ -10,6 +10,9 @@
             <p>Choose Public Repo</p>
           </span>
         </div>
+        <div class="dropdown-icon">
+          <ChevronDownIcon size="30" />
+        </div>
       </div>
     </div>
     <div class="darker-background"></div>
@@ -17,12 +20,13 @@
 </template>
 
 <script>
-import { PlusCircleIcon } from "vue-feather-icons";
+import { PlusCircleIcon, ChevronDownIcon } from "vue-feather-icons";
 
 export default {
   name: "InputRepo",
   components: {
-    PlusCircleIcon
+    PlusCircleIcon,
+    ChevronDownIcon
   }
 };
 </script>
@@ -32,12 +36,13 @@ export default {
   @extend .rounded-cust-sm;
   @extend .shadow-lg-green;
 
-  width: 380px;
+  min-width: 350px;
   background: $green;
   cursor: pointer;
   color: $black;
   padding: 25px 15px;
   display: flex;
+  justify-content: space-between;
   transition: 0.3s ease;
   z-index: 2;
 
