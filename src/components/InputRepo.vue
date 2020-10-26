@@ -10,8 +10,8 @@
             <p>Choose Public Repo</p>
           </span>
         </div>
-        <div class="dropdown-icon">
-          <ChevronDownIcon size="30" />
+        <div class="dropdown-container">
+          <ChevronDownIcon size="30" class="dropdown-icon" />
         </div>
       </div>
     </div>
@@ -58,22 +58,49 @@ export default {
 
   .public-repo {
     display: flex;
+
+    .plus-icon {
+      margin-right: 5px;
+      fill: $black;
+      stroke: $green;
+      transition: 0.3s ease;
+    }
+
+    .repo-text {
+      margin-left: 5px;
+      font-size: 1.3em;
+      font-weight: 500;
+
+      p {
+        margin: 0 auto;
+      }
+    }
   }
 
-  .plus-icon {
-    margin-right: 5px;
-    fill: $black;
-    stroke: $green;
-    transition: 0.3s ease;
-  }
+  .dropdown-container {
+    .dropdown-icon {
+      animation-duration: 0.3s;
+      animation-fill-mode: both;
+      animation-name: rotateBackward;
 
-  .repo-text {
-    margin-left: 5px;
-    font-size: 1.3em;
-    font-weight: 500;
+      &:hover {
+        animation-name: rotateForward;
+      }
+    }
 
-    p {
-      margin: 0 auto;
+    @keyframes rotateForward {
+      100% {
+        transform: rotate(180deg);
+      }
+    }
+
+    @keyframes rotateBackward {
+      0% {
+        transform: rotate(180deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
     }
   }
 }
