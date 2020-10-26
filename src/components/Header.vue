@@ -20,6 +20,10 @@ h1 {
   color: $black;
   font-weight: 600;
   font-size: 3.2em;
+
+  @media only screen and (max-width: $mobile-breakpoint) {
+    font-size: 2.8em;
+  }
 }
 p {
   color: $dark;
