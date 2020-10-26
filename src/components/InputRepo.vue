@@ -12,9 +12,9 @@
         </div>
         <div class="dropdown-container">
           <ChevronDownIcon size="30" class="dropdown-icon" />
-        </div>
-        <div class="dropdown-content">
-          <div class="dropdown-content-child shadow-lg"></div>
+          <div class="dropdown-content">
+            <div class="dropdown-content-child shadow-lg"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -98,6 +98,12 @@ export default {
       .dropdown-icon {
         animation-name: rotateForward;
       }
+
+      + .dropdown-content {
+        .dropdown-content-child {
+          background: red;
+        }
+      }
     }
 
     @keyframes rotateForward {
@@ -133,15 +139,16 @@ export default {
   }
 
   // Add dropdown container content
-  .repo-chooser {
+  .dropdown-container {
     position: relative;
 
     .dropdown-content {
       position: absolute;
       top: 100%;
-      left: 0;
+      right: -15px;
       width: 100%;
       z-index: 6;
+      min-width: 350px;
 
       .dropdown-content-child {
         @extend .rounded-cust-sm;
