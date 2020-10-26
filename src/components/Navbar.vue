@@ -166,6 +166,7 @@ export default {
     height: 0vh;
     top: 5rem;
     z-index: 3;
+    padding-top: 5rem;
     background: #fff;
     display: flex;
     justify-content: center;
