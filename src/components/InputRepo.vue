@@ -1,6 +1,6 @@
 <template>
   <div id="input-repo">
-    <div class="d-flex justify-content-center py-3 mt-3">
+    <div class="d-flex justify-content-center py-3 mt-3 mb-5">
       <div class="repo-chooser">
         <span>
           <GithubIcon class="github-icon" size="25" />
