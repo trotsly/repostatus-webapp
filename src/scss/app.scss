@@ -3,3 +3,14 @@
 @import "fonts";
 
 $mobile-breakpoint: 468px;
+
+body {
+    margin: 0;
+
+    a {
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
