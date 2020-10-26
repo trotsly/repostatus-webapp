@@ -99,10 +99,8 @@ export default {
         animation-name: rotateForward;
       }
 
-      + .dropdown-content {
-        .dropdown-content-child {
-          background: red;
-        }
+      .dropdown-content {
+        animation-name: fadeIn;
       }
     }
 
@@ -143,12 +141,15 @@ export default {
     position: relative;
 
     .dropdown-content {
+      @extend .animation-basic;
+
       position: absolute;
       top: 100%;
       right: -15px;
       width: 100%;
       z-index: 6;
       min-width: 350px;
+      visibility: hidden;
 
       .dropdown-content-child {
         @extend .rounded-cust-sm;
@@ -157,6 +158,12 @@ export default {
         width: 100%;
         height: 100px;
       }
+    }
+  }
+
+  @keyframes fadeIn {
+    100% {
+      visibility: visible;
     }
   }
 }
