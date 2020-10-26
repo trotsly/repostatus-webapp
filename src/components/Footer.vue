@@ -1,6 +1,6 @@
 <template>
   <div id="footer">
-    <div class="footer-container py-5 container-fluid col-lg-8 col-sm-12">
+    <div class="footer-container container-fluid col-lg-8 col-sm-12">
       <div class="copyright">
         © 2020 Trotsly. All rights reserved.
       </div>
@@ -31,9 +31,11 @@ export default {
 #footer {
   .footer-container {
     margin-top: 5em;
-    border-top: 2px solid $grey;
+    //border-top: 1px solid $grey;
     display: flex;
     justify-content: space-between;
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
 
     .copyright,
     .links {
@@ -53,6 +55,15 @@ export default {
             transition: 0.2s ease;
           }
         }
+      }
+    }
+
+    @media only screen and (max-width: 878px) {
+      flex-direction: column;
+      padding: 1.5em 0;
+
+      .copyright {
+        margin-bottom: 1em;
       }
     }
   }
