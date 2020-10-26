@@ -1,7 +1,7 @@
 // Shadow
 
 .shadow-lg-cust {
-    box-shadow: 0 19px 32px lighten(#000, 80), 0 15px 18px lighten(#000, 85);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .shadow-lg-green {
@@ -18,4 +18,11 @@
 
 .rounded-cust-sm {
     border-radius: 5px;
+}
+
+// Animation
+
+.animation-basic {
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
 }

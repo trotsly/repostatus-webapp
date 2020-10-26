@@ -13,6 +13,9 @@
         <div class="dropdown-container">
           <ChevronDownIcon size="30" class="dropdown-icon" />
         </div>
+        <div class="dropdown-content">
+          <div class="dropdown-content-child shadow-lg"></div>
+        </div>
       </div>
     </div>
     <div class="darker-background"></div>
@@ -87,8 +90,7 @@ export default {
 
   .dropdown-container {
     .dropdown-icon {
-      animation-duration: 0.3s;
-      animation-fill-mode: both;
+      @extend .animation-basic;
       animation-name: rotateBackward;
     }
 
@@ -128,6 +130,27 @@ export default {
     width: 98%;
     background: $white;
     transform: rotate(-3deg);
+  }
+
+  // Add dropdown container content
+  .repo-chooser {
+    position: relative;
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      z-index: 6;
+
+      .dropdown-content-child {
+        @extend .rounded-cust-sm;
+
+        margin-top: 10px;
+        width: 100%;
+        height: 100px;
+      }
+    }
   }
 }
 </style>
