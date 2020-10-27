@@ -32,11 +32,15 @@
                   type="text"
                   placeholder="https://github.com/octocat/hello-world"
                   spellcheck="false"
-                  v-model="getLink"
+                  v-model="linkEntered"
                   @focus="showLink"
+                  :input="verifyLink()"
                 />
+                <CheckCircleIcon v-if="isLinkValid" class="check-icon" />
               </div>
-              <button class="select-link">Select</button>
+              <button :disabled="!isLinkValid" class="select-link">
+                Get Status
+              </button>
             </div>
           </main>
         </div>
@@ -47,18 +51,20 @@
 
 <script>
 import MicroModal from "micromodal";
-import { XIcon, LinkIcon } from "vue-feather-icons";
+import { XIcon, LinkIcon, CheckCircleIcon } from "vue-feather-icons";
 
 export default {
   name: "LinkHandler",
   components: {
     XIcon,
-    LinkIcon
+    LinkIcon,
+    CheckCircleIcon
   },
   data() {
     return {
       linkProto: "https://github.com/",
-      linkEntered: ""
+      linkEntered: "",
+      linkValid: false
     };
   },
   methods: {
@@ -89,12 +95,27 @@ export default {
       /**
        * Update the link when the input is clicked
        */
+      if (this.linkEntered != "") return;
       this.linkEntered = this.linkProto;
+    },
+    verifyLink() {
+      /**
+       * Verify the link as the user keeps typing it
+       *
+       * The link should be of type https://github.com/username/reponame/
+       *
+       * We will use some regex to validate it.
+       */
+      this.linkValid = Boolean(
+        this.linkEntered.match(
+          /^https?:\/\/github.com\/[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+$/g
+        )
+      );
     }
   },
   computed: {
-    getLink() {
-      return this.linkEntered;
+    isLinkValid() {
+      return this.linkValid;
     }
   },
   mounted() {
@@ -117,6 +138,17 @@ export default {
       @extend .rounded-cust-sm;
 
       width: 100%;
+    }
+
+    position: relative;
+
+    .check-icon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+
+      fill: $green;
+      stroke: $ming;
     }
   }
 
