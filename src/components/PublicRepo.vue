@@ -35,14 +35,9 @@
                 v-model="usernameEntered"
                 :input="verifyUsername()"
               />
-              <router-link
-                :disabled="!isUsernameValid"
-                :to="toListRepos"
-                tag="button"
-                class="select-username"
-              >
+              <button :disabled="!isUsernameValid" class="select-username">
                 Select Username
-              </router-link>
+              </button>
             </div>
           </main>
         </div>
@@ -96,9 +91,6 @@ export default {
     }
   },
   computed: {
-    toListRepos() {
-      return `/repos/${this.usernameEntered}/`;
-    },
     isUsernameValid() {
       return this.isValidUsername;
     }
