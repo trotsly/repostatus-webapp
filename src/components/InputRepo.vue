@@ -6,6 +6,7 @@
       @repo="parseRepoSelected"
       :username="getUsernamePassed"
     />
+    <LinkHandler ref="linkHandlerModal" />
     <div class="d-flex justify-content-center py-3 mt-3 mb-5">
       <div class="repo-chooser">
         <div class="public-repo" @click="showPublicRepoChooser">
@@ -26,7 +27,7 @@
                   GitHub
                 </div>
               </div>
-              <div class="extra-option">
+              <div class="extra-option" @click="showLinkHandler">
                 <LinkIcon />
                 <div class="option-text">
                   Enter Link
@@ -45,6 +46,7 @@
 import { PlusCircleIcon, ChevronDownIcon, LinkIcon } from "vue-feather-icons";
 import PublicRepo from "@/components/PublicRepo";
 import ListRepo from "@/components/ListRepo";
+import LinkHandler from "@/components/LinkHandler";
 
 export default {
   name: "InputRepo",
@@ -53,7 +55,8 @@ export default {
     ChevronDownIcon,
     LinkIcon,
     PublicRepo,
-    ListRepo
+    ListRepo,
+    LinkHandler
   },
   data() {
     return {
@@ -83,6 +86,12 @@ export default {
        * it can be used in the next step.
        */
       this.repoSelected = repo;
+    },
+    showLinkHandler: function() {
+      /**
+       * Show the link handler modal using the ref
+       */
+      this.$refs.linkHandlerModal.showModal();
     }
   },
   computed: {
