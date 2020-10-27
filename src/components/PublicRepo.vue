@@ -32,8 +32,19 @@
                 type="text"
                 placeholder="Enter your GitHub username"
                 spellcheck="false"
+                v-model="usernameEntered"
+                :input="verifyUsername()"
+                @keyup.enter="toListRepos"
               />
-              <button class="select-username">Select Username</button>
+              <router-link
+                :disabled="!isUsernameValid"
+                :to="toListRepos"
+                tag="button"
+                @click="toListRepos"
+                class="select-username"
+              >
+                Select Username
+              </router-link>
             </div>
           </main>
         </div>
@@ -50,6 +61,12 @@ export default {
   name: "PublicRepo",
   components: {
     XIcon
+  },
+  data() {
+    return {
+      usernameEntered: "",
+      isValidUsername: false
+    };
   },
   methods: {
     showModal() {
@@ -72,6 +89,20 @@ export default {
       document.getElementById("close-btn").addEventListener("click", () => {
         MicroModal.close("modal-frame");
       });
+    },
+    verifyUsername() {
+      /**
+       * Verify the username when the user is typing it
+       */
+      this.isValidUsername = Boolean(this.usernameEntered.length);
+    }
+  },
+  computed: {
+    toListRepos() {
+      return `/repos/${this.usernameEntered}/`;
+    },
+    isUsernameValid() {
+      return this.isValidUsername;
     }
   },
   mounted() {
