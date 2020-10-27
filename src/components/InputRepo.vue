@@ -1,7 +1,11 @@
 <template>
   <div id="input-repo">
     <PublicRepo ref="publicRepoModal" @username="parseUsernameEntered" />
-    <ListRepo ref="listRepoModal" @repo="parseRepoSelected" />
+    <ListRepo
+      ref="listRepoModal"
+      @repo="parseRepoSelected"
+      :username="getUsernamePassed"
+    />
     <div class="d-flex justify-content-center py-3 mt-3 mb-5">
       <div class="repo-chooser">
         <div class="public-repo" @click="showPublicRepoChooser">
@@ -71,6 +75,7 @@ export default {
        * component
        */
       this.usernamePassed = username;
+      this.$refs.listRepoModal.showModal();
     },
     parseRepoSelected: function(repo) {
       /**
