@@ -47,7 +47,7 @@
                 >
                   <div class="repo-content">
                     <BookIcon class="repo-icon" size="25" />
-                    <p>{{ repo }}</p>
+                    <p>{{ repo.name }}</p>
                   </div>
                   <CheckCircleIcon
                     v-if="getHighlighted == index"
@@ -91,7 +91,8 @@ export default {
       repoUrl: "",
       isLoading: true,
       reposFetched: ["nana", "fancyhaha"],
-      repoSelectedIndex: -1
+      repoSelectedIndex: -1,
+      repoEndpoint: "http://0.0.0.0:5000/repos/"
     };
   },
   methods: {
@@ -123,6 +124,14 @@ export default {
        * Load the repo's for the given username by making a
        * request to the API.
        */
+      if (this.username == "") return;
+      console.log("Loading data");
+      fetch(this.repoEndpoint + this.username)
+        .then(response => response.json())
+        .then(jsonData => {
+          this.reposFetched = jsonData;
+          this.isLoading = false;
+        });
     },
     highlightRepo(index) {
       /**
@@ -144,6 +153,13 @@ export default {
     },
     getHighlighted() {
       return this.repoSelectedIndex;
+    }
+  },
+  watch: {
+    username: {
+      handler() {
+        this.loadRepo();
+      }
     }
   },
   mounted() {
