@@ -45,8 +45,15 @@
                   :key="index"
                   @click="highlightRepo(index)"
                 >
-                  <BookIcon class="repo-icon" size="25" />
-                  <p>{{ repo }}</p>
+                  <div class="repo-content">
+                    <BookIcon class="repo-icon" size="25" />
+                    <p>{{ repo }}</p>
+                  </div>
+                  <CheckCircleIcon
+                    v-if="getHighlighted == index"
+                    class="check-icon"
+                    size="25"
+                  />
                 </div>
               </div>
               <button class="select-repo">
@@ -62,7 +69,7 @@
 
 <script>
 import MicroModal from "micromodal";
-import { XIcon, BookIcon } from "vue-feather-icons";
+import { XIcon, BookIcon, CheckCircleIcon } from "vue-feather-icons";
 import { HalfCircleSpinner } from "epic-spinners";
 
 export default {
@@ -76,7 +83,8 @@ export default {
   components: {
     XIcon,
     BookIcon,
-    HalfCircleSpinner
+    HalfCircleSpinner,
+    CheckCircleIcon
   },
   data() {
     return {
@@ -122,14 +130,6 @@ export default {
        * repo's index
        */
       this.repoSelectedIndex = index;
-    },
-    isHighlighted(index) {
-      /**
-       * Check if the passed index is highlighted or not.
-       *
-       * Return a bool stating that.
-       */
-      return this.repoSelectedIndex == index;
     }
   },
   computed: {
@@ -174,19 +174,28 @@ export default {
 
     .repo-container-item {
       display: flex;
+      justify-content: space-between;
       padding: 10px 10px;
       margin: 5px;
       border-bottom: 1px solid $green;
 
-      .repo-icon {
-        stroke: $ming;
+      .repo-content {
+        display: flex;
+        .repo-icon {
+          stroke: $ming;
+        }
+
+        p {
+          margin: 0;
+          margin-left: 10px;
+          font-weight: 500;
+          font-size: 1em;
+        }
       }
 
-      p {
-        margin: 0;
-        margin-left: 10px;
-        font-weight: 500;
-        font-size: 1em;
+      .check-icon {
+        fill: $green;
+        stroke: $ming;
       }
 
       &:hover {
