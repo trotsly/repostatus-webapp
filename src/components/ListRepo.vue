@@ -43,6 +43,7 @@
                   class="repo-container-item"
                   v-for="(repo, index) in getReposFetched"
                   :key="index"
+                  @click="highlightRepo(index)"
                 >
                   <BookIcon class="repo-icon" size="25" />
                   <p>{{ repo }}</p>
@@ -81,7 +82,8 @@ export default {
     return {
       repoUrl: "",
       isLoading: true,
-      reposFetched: ["nana", "fancyhaha"]
+      reposFetched: ["nana", "fancyhaha"],
+      repoSelectedIndex: -1
     };
   },
   methods: {
@@ -113,6 +115,21 @@ export default {
        * Load the repo's for the given username by making a
        * request to the API.
        */
+    },
+    highlightRepo(index) {
+      /**
+       * Highlight the passed repo and store the index as the selected
+       * repo's index
+       */
+      this.repoSelectedIndex = index;
+    },
+    isHighlighted(index) {
+      /**
+       * Check if the passed index is highlighted or not.
+       *
+       * Return a bool stating that.
+       */
+      return this.repoSelectedIndex == index;
     }
   },
   computed: {
@@ -124,6 +141,9 @@ export default {
     },
     getIsLoading() {
       return this.isLoading;
+    },
+    getHighlighted() {
+      return this.repoSelectedIndex;
     }
   },
   mounted() {
@@ -167,6 +187,10 @@ export default {
         margin-left: 10px;
         font-weight: 500;
         font-size: 1em;
+      }
+
+      &:hover {
+        background: darken($white, 5);
       }
     }
 
