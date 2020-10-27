@@ -31,14 +31,21 @@
                 <span class="font-weight-bold">{{ getUsername }}</span>
               </p>
               <p class="repo">Repository</p>
-              <div class="repo-container">
-                <div class="repo-container-item">
+              <div v-if="getIsLoading" class="loading-spinner">
+                <HalfCircleSpinner
+                  :size="60"
+                  color="#83C5BE"
+                  :animation-duration="750"
+                />
+              </div>
+              <div v-else class="repo-container">
+                <div
+                  class="repo-container-item"
+                  v-for="(repo, index) in getReposFetched"
+                  :key="index"
+                >
                   <BookIcon class="repo-icon" size="25" />
-                  <p>FancyRepoName</p>
-                </div>
-                <div class="repo-container-item">
-                  <BookIcon class="repo-icon" size="25" />
-                  <p>FancyRepoName</p>
+                  <p>{{ repo }}</p>
                 </div>
               </div>
               <button class="select-repo">
@@ -55,6 +62,7 @@
 <script>
 import MicroModal from "micromodal";
 import { XIcon, BookIcon } from "vue-feather-icons";
+import { HalfCircleSpinner } from "epic-spinners";
 
 export default {
   name: "ListRepo",
@@ -66,7 +74,15 @@ export default {
   },
   components: {
     XIcon,
-    BookIcon
+    BookIcon,
+    HalfCircleSpinner
+  },
+  data() {
+    return {
+      repoUrl: "",
+      isLoading: true,
+      reposFetched: ["nana", "fancyhaha"]
+    };
   },
   methods: {
     showModal() {
@@ -91,11 +107,23 @@ export default {
         .addEventListener("click", () => {
           MicroModal.close("modal-frame-repo");
         });
+    },
+    loadRepo() {
+      /**
+       * Load the repo's for the given username by making a
+       * request to the API.
+       */
     }
   },
   computed: {
     getUsername() {
       return this.username;
+    },
+    getReposFetched() {
+      return this.reposFetched;
+    },
+    getIsLoading() {
+      return this.isLoading;
     }
   },
   mounted() {
@@ -150,6 +178,12 @@ export default {
   .select-repo {
     @extend .button-base;
     margin-bottom: 0;
+  }
+
+  .loading-spinner {
+    margin: 3em auto;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>
