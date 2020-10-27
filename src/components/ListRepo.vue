@@ -187,6 +187,9 @@ export default {
     width: 100%;
     border: 1px solid $green;
     margin-top: 10px;
+    max-height: 50vh;
+    overflow: scroll;
+    overflow-x: hidden;
 
     .repo-container-item {
       display: flex;
