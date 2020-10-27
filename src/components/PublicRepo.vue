@@ -9,9 +9,7 @@
           aria-labelledby="modal-frame-title"
         >
           <header class="modal__header">
-            <h3 id="modal-frame-title">
-              Select a public repo
-            </h3>
+            <h3 id="modal-frame-title"></h3>
             <button
               id="close-btn"
               class="modal__close"
@@ -21,7 +19,23 @@
               <XIcon></XIcon>
             </button>
           </header>
-          <main class="modal__content" id="modal-frame-content"></main>
+          <main class="modal__content" id="modal-frame-content">
+            <div class="repo-chooser-content">
+              <img src="@/assets/github_icon.png" alt="" />
+              <p class="desc">
+                Select public repos from your account
+              </p>
+              <p class="text-left username">
+                Username
+              </p>
+              <input
+                type="text"
+                placeholder="Enter your GitHub username"
+                spellcheck="false"
+              />
+              <button class="select-username">Select Username</button>
+            </div>
+          </main>
         </div>
       </div>
     </div>
@@ -66,3 +80,35 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.repo-chooser-content {
+  img {
+    width: 70px;
+    height: auto;
+  }
+
+  .desc {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 1.1em;
+  }
+
+  .username {
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  input {
+    @extend .rounded-cust-sm;
+    @extend .input-base;
+
+    width: 100%;
+  }
+
+  .select-username {
+    @extend .button-base;
+  }
+}
+</style>

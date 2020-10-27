@@ -41,3 +41,42 @@
     animation-duration: 0.2s;
     animation-fill-mode: both;
 }
+
+// Input
+
+.input-base {
+    border: 2px solid $green;
+    outline: none;
+    padding: 10px 10px;
+    font-size: 1em;
+
+    &:focus {
+        outline: none;
+        border: 2px solid $ming;
+    }
+}
+
+.button-base {
+    @extend .rounded-cust-sm;
+
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    background: $green;
+    color: $black;
+    margin: 10px auto;
+    width: 100%;
+    font-weight: 500;
+    transition: .2s ease;
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+
+    &:hover {
+        background: darken($green, 10);
+        transition: 0.2s ease;
+    }
+}
