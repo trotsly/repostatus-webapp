@@ -34,13 +34,11 @@
                 spellcheck="false"
                 v-model="usernameEntered"
                 :input="verifyUsername()"
-                @keyup.enter="toListRepos"
               />
               <router-link
                 :disabled="!isUsernameValid"
                 :to="toListRepos"
                 tag="button"
-                @click="toListRepos"
                 class="select-username"
               >
                 Select Username

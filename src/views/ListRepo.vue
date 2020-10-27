@@ -10,6 +10,9 @@ export default {
       type: String,
       default: ""
     }
+  },
+  mounted() {
+    this.$Progress.start();
   }
 };
 </script>
