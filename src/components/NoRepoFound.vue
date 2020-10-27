@@ -24,8 +24,8 @@
             </button>
           </header>
           <main class="modal__content" id="modal-frame-notfound-content">
-            <div id="not-found-container">
-              <AlertCircleIcon size="50" />
+            <div class="not-found-container">
+              <AlertCircleIcon size="70" />
               <p class="desc">
                 No public repo found for
                 <span class="font-weight-bold">{{ getUsername }}</span>
@@ -78,7 +78,7 @@ export default {
        * style and replace the arrow with a custom icon.
        */
       document
-        .getElementById("close-btn-repo")
+        .getElementById("close-btn-notfound")
         .addEventListener("click", () => {
           MicroModal.close("modal-frame-notfound");
         });
@@ -95,3 +95,13 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.not-found-container {
+  .desc {
+    font-size: 1.2em;
+    margin-top: 2.5em;
+    font-weight: 500;
+  }
+}
+</style>
