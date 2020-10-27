@@ -103,8 +103,11 @@ export default {
   }
 
   .dropdown-container {
+    @extend .rounded-cust-sm-r;
+
     padding-left: 15px;
     padding-right: 15px;
+    transition: 0.2s ease;
 
     .dropdown-icon {
       @extend .animation-basic;
@@ -112,6 +115,9 @@ export default {
     }
 
     &:hover {
+      background: darken($green, 15);
+      transition: 0.2s ease;
+
       .dropdown-icon {
         animation-name: rotateForward;
       }
