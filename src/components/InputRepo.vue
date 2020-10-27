@@ -1,8 +1,9 @@
 <template>
   <div id="input-repo">
+    <PublicRepo ref="publicRepoModal" />
     <div class="d-flex justify-content-center py-3 mt-3 mb-5">
       <div class="repo-chooser">
-        <div class="public-repo">
+        <div class="public-repo" @click="showPublicRepoChooser">
           <span>
             <PlusCircleIcon class="plus-icon" size="30" />
           </span>
@@ -37,13 +38,23 @@
 
 <script>
 import { PlusCircleIcon, ChevronDownIcon, LinkIcon } from "vue-feather-icons";
+import PublicRepo from "@/components/PublicRepo";
 
 export default {
   name: "InputRepo",
   components: {
     PlusCircleIcon,
     ChevronDownIcon,
-    LinkIcon
+    LinkIcon,
+    PublicRepo
+  },
+  methods: {
+    showPublicRepoChooser: function() {
+      /**
+       * Show the public repo chooser modal using the reference.
+       */
+      this.$refs.publicRepoModal.showModal();
+    }
   }
 };
 </script>
