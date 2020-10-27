@@ -1,6 +1,7 @@
 <template>
   <div id="input-repo">
-    <PublicRepo ref="publicRepoModal" />
+    <PublicRepo ref="publicRepoModal" @username="parseUsernameEntered" />
+    <ListRepo ref="listRepoModal" @repo="parseRepoSelected" />
     <div class="d-flex justify-content-center py-3 mt-3 mb-5">
       <div class="repo-chooser">
         <div class="public-repo" @click="showPublicRepoChooser">
@@ -39,6 +40,7 @@
 <script>
 import { PlusCircleIcon, ChevronDownIcon, LinkIcon } from "vue-feather-icons";
 import PublicRepo from "@/components/PublicRepo";
+import ListRepo from "@/components/ListRepo";
 
 export default {
   name: "InputRepo",
@@ -46,7 +48,14 @@ export default {
     PlusCircleIcon,
     ChevronDownIcon,
     LinkIcon,
-    PublicRepo
+    PublicRepo,
+    ListRepo
+  },
+  data() {
+    return {
+      usernamePassed: "",
+      repoSelected: ""
+    };
   },
   methods: {
     showPublicRepoChooser: function() {
@@ -54,6 +63,26 @@ export default {
        * Show the public repo chooser modal using the reference.
        */
       this.$refs.publicRepoModal.showModal();
+    },
+    parseUsernameEntered: function(username) {
+      /**
+       * Parse the username entered by the user in the public repo
+       * chooser part. We need to pass this username to the ListRepo
+       * component
+       */
+      this.usernamePassed = username;
+    },
+    parseRepoSelected: function(repo) {
+      /**
+       * Parse the repo selected by the user and store it so that
+       * it can be used in the next step.
+       */
+      this.repoSelected = repo;
+    }
+  },
+  computed: {
+    getUsernamePassed() {
+      return this.usernamePassed;
     }
   }
 };
