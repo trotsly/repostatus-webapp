@@ -5,6 +5,11 @@
     width: 30px;
     height: 50px;
     background: none;
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
     
     .line {
       width: 20px;
