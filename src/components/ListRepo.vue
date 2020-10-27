@@ -64,6 +64,7 @@
         </div>
       </div>
     </div>
+    <NoRepoFound ref="noRepoFoundModal" :username="getUsername" />
   </div>
 </template>
 
@@ -71,6 +72,7 @@
 import MicroModal from "micromodal";
 import { XIcon, BookIcon, CheckCircleIcon } from "vue-feather-icons";
 import { HalfCircleSpinner } from "epic-spinners";
+import NoRepoFound from "@/components/NoRepoFound";
 
 export default {
   name: "ListRepo",
@@ -84,7 +86,8 @@ export default {
     XIcon,
     BookIcon,
     HalfCircleSpinner,
-    CheckCircleIcon
+    CheckCircleIcon,
+    NoRepoFound
   },
   data() {
     return {
@@ -105,6 +108,9 @@ export default {
         awaitCloseAnimation: true,
         awaitOpenAnimation: true
       });
+    },
+    hideModal() {
+      MicroModal.close("modal-frame-repo");
     },
     listenClose() {
       /**
@@ -127,7 +133,10 @@ export default {
       if (this.username == "") return;
       console.log("Loading data");
       fetch(this.repoEndpoint + this.username)
-        .then(response => response.json())
+        .then(response => {
+          if (response.status != 200) this.handleNotFound();
+          return response.json();
+        })
         .then(jsonData => {
           this.reposFetched = jsonData;
           this.isLoading = false;
@@ -139,6 +148,16 @@ export default {
        * repo's index
        */
       this.repoSelectedIndex = index;
+    },
+    handleNotFound() {
+      /**
+       * Handle if the repo endpoint returns a not found error.
+       *
+       * We will basically call this method if we get a response of anything
+       * other than 200
+       */
+      this.hideModal();
+      this.$refs.noRepoFoundModal.showModal();
     }
   },
   computed: {
