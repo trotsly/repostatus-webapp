@@ -34,8 +34,13 @@
                 spellcheck="false"
                 v-model="usernameEntered"
                 :input="verifyUsername()"
+                @keyup.enter="selectUsername"
               />
-              <button :disabled="!isUsernameValid" class="select-username">
+              <button
+                :disabled="!isUsernameValid"
+                class="select-username"
+                @click="selectUsername"
+              >
                 Select Username
               </button>
             </div>
@@ -88,6 +93,14 @@ export default {
        * Verify the username when the user is typing it
        */
       this.isValidUsername = Boolean(this.usernameEntered.length);
+    },
+    selectUsername() {
+      /**
+       * Select the username that the user entered and pass it to
+       * the parent component
+       */
+      this.$emit("username", this.usernameEntered);
+      MicroModal.close("modal-frame");
     }
   },
   computed: {
