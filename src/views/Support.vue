@@ -1,9 +1,26 @@
 <template>
-  <div id="support-container"></div>
+  <div id="support-container">
+    <StaticContent :contentURL="getContentURL" />
+  </div>
 </template>
 
 <script>
+import StaticContent from "@/components/StaticContent";
+
 export default {
-  name: "Support"
+  name: "Support",
+  components: {
+    StaticContent
+  },
+  data() {
+    return {
+      contentURL: "../assets/support.md"
+    };
+  },
+  computed: {
+    getContentURL() {
+      return this.contentURL;
+    }
+  }
 };
 </script>
