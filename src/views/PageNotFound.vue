@@ -30,6 +30,12 @@ export default {
   height: 90vh;
   margin: 0 auto;
 
+  @media only screen and (max-width: $mobile-breakpoint) {
+    width: 100%;
+    padding: 0 25px;
+    height: 80vh;
+  }
+
   .content {
     text-align: left;
 
