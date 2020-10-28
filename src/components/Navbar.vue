@@ -7,6 +7,7 @@
       <div class="links">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
+        <router-link to="/donate" class="highlight-link">Donate</router-link>
       </div>
       <div id="collapsed">
         <button class="menu" @click="expandBar()">
@@ -20,6 +21,7 @@
       <div class="py-5" id="expanded-links">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
+        <router-link to="/donate" class="highlight-link">Donate</router-link>
       </div>
     </div>
   </div>
@@ -184,6 +186,17 @@ export default {
       &.router-link-exact-active {
         color: $ming;
       }
+    }
+  }
+
+  .highlight-link {
+    @extend .rounded-cust-sm;
+    padding: 5px 10px;
+    color: $black !important;
+    background: $green;
+
+    &:hover {
+      background: darken($green, 5);
     }
   }
 }
