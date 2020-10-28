@@ -131,7 +131,6 @@ export default {
        * request to the API.
        */
       if (this.username == "") return;
-      console.log("Loading data");
       fetch(this.repoEndpoint + this.username)
         .then(response => {
           if (response.status != 200) this.handleNotFound();
