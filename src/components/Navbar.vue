@@ -7,7 +7,7 @@
       <div class="links">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
-        <router-link to="/donate" class="highlight-link">Donate</router-link>
+        <router-link to="/support" class="highlight-link">Support</router-link>
       </div>
       <div id="collapsed">
         <button class="menu" @click="expandBar()">
@@ -21,7 +21,7 @@
       <div class="py-5" id="expanded-links">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
-        <router-link to="/donate" class="highlight-link">Donate</router-link>
+        <router-link to="/support" class="highlight-link">Support</router-link>
       </div>
     </div>
   </div>
