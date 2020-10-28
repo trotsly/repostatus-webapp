@@ -24,6 +24,11 @@ const routes = [
     path: "/support",
     name: "Support",
     component: () => import("../views/Support.vue")
+  },
+  {
+    path: "*",
+    name: "Not Found",
+    component: () => import("../views/PageNotFound.vue")
   }
 ];
 
