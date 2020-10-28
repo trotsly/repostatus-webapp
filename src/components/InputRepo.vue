@@ -21,7 +21,7 @@
           <ChevronDownIcon size="30" class="dropdown-icon" />
           <div class="dropdown-content">
             <div class="dropdown-content-child shadow-lg">
-              <div class="extra-option">
+              <div @click="handleGithubOauth" class="extra-option">
                 <img src="@/assets/github_icon.png" alt="" />
                 <div class="option-text">
                   GitHub
@@ -92,6 +92,33 @@ export default {
        * Show the link handler modal using the ref
        */
       this.$refs.linkHandlerModal.showModal();
+    },
+    handleGithubOauth: async function() {
+      /**
+       * Handle the OAuth of GitHub.
+       *
+       * The OAuth process will require the user to have a state
+       * that will be fetched from backend. Once that's ready, a
+       * new window will be opened and the user will be asked to
+       * authenticate access.
+       *
+       * We will then wait till the new window closes and after that
+       * continue
+       */
+      const windowFeatures =
+        "location=yes,height=570,width=520,scrollbars=yes,status=yes";
+      const win = window.open(
+        "https://google.com",
+        "Google Window",
+        windowFeatures
+      );
+
+      const timer = setInterval(() => {
+        if (win.closed) {
+          clearInterval(timer);
+          console.log("Window closed");
+        }
+      }, 3000);
     }
   },
   computed: {
