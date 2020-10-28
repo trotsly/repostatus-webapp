@@ -7,7 +7,7 @@
       <div class="links">
         <ul class="list-inline">
           <li class="list-inline-item">
-            <a href="">Terms of Use</a>
+            <a href="/privacy">Privacy Policy</a>
           </li>
           <li class="list-inline-item">
             <a href="">API</a>
