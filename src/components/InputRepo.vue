@@ -7,6 +7,7 @@
       :username="getUsernamePassed"
     />
     <LinkHandler ref="linkHandlerModal" />
+    <OAuthHandler ref="oauthHandlerModal" />
     <div class="d-flex justify-content-center py-3 mt-3 mb-5">
       <div class="repo-chooser">
         <div class="public-repo" @click="showPublicRepoChooser">
@@ -21,7 +22,7 @@
           <ChevronDownIcon size="30" class="dropdown-icon" />
           <div class="dropdown-content">
             <div class="dropdown-content-child shadow-lg">
-              <div @click="handleGithubOauth" class="extra-option">
+              <div class="extra-option" @click="handleGithubClick">
                 <img src="@/assets/github_icon.png" alt="" />
                 <div class="option-text">
                   GitHub
@@ -47,6 +48,7 @@ import { PlusCircleIcon, ChevronDownIcon, LinkIcon } from "vue-feather-icons";
 import PublicRepo from "@/components/PublicRepo";
 import ListRepo from "@/components/ListRepo";
 import LinkHandler from "@/components/LinkHandler";
+import OAuthHandler from "@/components/OAuth";
 
 export default {
   name: "InputRepo",
@@ -56,7 +58,8 @@ export default {
     LinkIcon,
     PublicRepo,
     ListRepo,
-    LinkHandler
+    LinkHandler,
+    OAuthHandler
   },
   data() {
     return {
@@ -93,32 +96,12 @@ export default {
        */
       this.$refs.linkHandlerModal.showModal();
     },
-    handleGithubOauth: async function() {
+    handleGithubClick: function() {
       /**
-       * Handle the OAuth of GitHub.
-       *
-       * The OAuth process will require the user to have a state
-       * that will be fetched from backend. Once that's ready, a
-       * new window will be opened and the user will be asked to
-       * authenticate access.
-       *
-       * We will then wait till the new window closes and after that
-       * continue
+       * Handle the click on the GitHub button which
+       * is one of the extra options.
        */
-      const windowFeatures =
-        "location=yes,height=570,width=520,scrollbars=yes,status=yes";
-      const win = window.open(
-        "https://google.com",
-        "Google Window",
-        windowFeatures
-      );
-
-      const timer = setInterval(() => {
-        if (win.closed) {
-          clearInterval(timer);
-          console.log("Window closed");
-        }
-      }, 3000);
+      this.$refs.oauthHandlerModal.handleGithubOauth();
     }
   },
   computed: {
