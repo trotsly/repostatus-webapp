@@ -31,9 +31,15 @@ export default {
        * For the about page the text will be present in the
        * passed file.
        */
-      this.$http.get(this.contentURL).then(response => {
-        this.content = marked(response.body);
-      });
+      this.$Progress.start();
+      this.$http
+        .get(this.contentURL)
+        .then(response => {
+          this.content = marked(response.body);
+        })
+        .then(() => {
+          this.$Progress.finish();
+        });
     }
   },
   computed: {
