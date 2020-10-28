@@ -56,7 +56,11 @@
                   />
                 </div>
               </div>
-              <button class="select-repo">
+              <button
+                :disabled="getBtnDisabled"
+                @click="selectRepo"
+                class="select-repo"
+              >
                 Select repo
               </button>
             </div>
@@ -157,6 +161,14 @@ export default {
        */
       this.hideModal();
       this.$refs.noRepoFoundModal.showModal();
+    },
+    selectRepo() {
+      /**
+       * Select the repo selected by the user and send it to the
+       * parent.
+       */
+      this.$emit("repo", this.reposFetched[this.repoSelectedIndex]);
+      this.hideModal();
     }
   },
   computed: {
@@ -171,6 +183,11 @@ export default {
     },
     getHighlighted() {
       return this.repoSelectedIndex;
+    },
+    getBtnDisabled() {
+      // Button will be disabled if the user has not selected
+      // any option or it is still loading
+      return this.isLoading || this.repoSelectedIndex == -1;
     }
   },
   watch: {
