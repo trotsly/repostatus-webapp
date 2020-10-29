@@ -124,12 +124,15 @@ export default {
 
 <style lang="scss">
 #nav {
+  border-bottom: 1px solid $grey;
+
   .top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    border-bottom: 1px solid $grey;
+    margin: 0 auto;
+    width: 75%;
     .brand {
       font-weight: 400;
       font-size: 20px;
@@ -151,6 +154,10 @@ export default {
     #collapsed {
       display: none;
     }
+    @media only screen and (max-width: 1100px) {
+      width: 100%;
+    }
+
     @media only screen and (max-width: 768px) {
       padding: 10px 20px;
       .links {
