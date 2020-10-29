@@ -24,8 +24,17 @@
             </button>
           </header>
           <main class="modal__content" id="modal-frame-oauth-content">
+            <div class="desc my-5">
+              <h2>Preparing for GitHub OAuth</h2>
+            </div>
             <div class="not-found-container">
-              <p class="desc"></p>
+              <p class="loading-spinner">
+                <HalfCircleSpinner
+                  :size="60"
+                  color="#83C5BE"
+                  :animation-duration="750"
+                />
+              </p>
             </div>
           </main>
         </div>
@@ -37,11 +46,21 @@
 <script>
 import { XIcon } from "vue-feather-icons";
 import MicroModal from "micromodal";
+import { HalfCircleSpinner } from "epic-spinners";
 
 export default {
   name: "OAuthHandler",
   components: {
-    XIcon
+    XIcon,
+    HalfCircleSpinner
+  },
+  data() {
+    return {
+      stateStorageName: "sessionState",
+      stateUrl: "http://0.0.0.0:5000/state",
+      clientId: process.env.VUE_APP_CLIENT_ID,
+      authUrl: "https://github.com/login/oauth/authorize"
+    };
   },
   methods: {
     showModal() {
@@ -70,7 +89,7 @@ export default {
           MicroModal.close("modal-frame-oauth");
         });
     },
-    handleGithubOauth: async function() {
+    showWindow: async function(state) {
       /**
        * Handle the OAuth of GitHub.
        *
@@ -85,8 +104,8 @@ export default {
       const windowFeatures =
         "location=yes,height=570,width=520,scrollbars=yes,status=yes";
       const win = window.open(
-        "https://google.com",
-        "Google Window",
+        `${this.authUrl}?state=${state}&client_id=${this.clientId}&scope="repo"`,
+        "GitHub OAuth",
         windowFeatures
       );
 
@@ -96,6 +115,52 @@ export default {
           console.log("Window closed");
         }
       }, 3000);
+    },
+    getState: async function() {
+      /**
+       * Get a new state and return it
+       */
+      const stateResponse = await fetch(this.stateUrl);
+      const jsonData = await stateResponse.json();
+      return jsonData["state"];
+    },
+    handleUserState: async function() {
+      /**
+       * Handle the state of the user
+       *
+       * Check to see if the user already has a
+       * state. If not, then create one, store it
+       * and use it.
+       *
+       * If it is already there, use that.
+       */
+      const stateStored = localStorage.getItem(this.stateStorageName);
+
+      if (stateStored != null) return stateStored;
+
+      // We need to create a new state.
+      // Before going forward, open the modal and show a loading animation
+      this.showModal();
+      const stateFetched = await this.getState();
+
+      // Store the state
+      localStorage.setItem(this.stateStorageName, stateFetched);
+
+      // show the new window
+      this.showWindow(stateFetched);
+    },
+    handleGithubOauth: function() {
+      /**
+       * Handle the OAuth.
+       *
+       * Before opening a new window, check to see if the user is already
+       * verified. We will do that by checking the state of the current
+       * browser. If the user is verified, we'll not open the window and
+       * accordingly make the request using that state
+       *
+       * If the user is not verified
+       */
+      this.handleUserState();
     }
   },
   mounted() {
@@ -104,3 +169,11 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.loading-spinner {
+  margin: 3em auto;
+  display: flex;
+  justify-content: center;
+}
+</style>
