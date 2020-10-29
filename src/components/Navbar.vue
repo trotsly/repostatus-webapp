@@ -132,7 +132,7 @@ export default {
     align-items: center;
     padding: 15px 40px;
     margin: 0 auto;
-    width: 75%;
+    width: 80%;
     .brand {
       font-weight: 400;
       font-size: 20px;
