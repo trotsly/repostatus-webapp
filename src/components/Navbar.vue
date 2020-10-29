@@ -2,7 +2,7 @@
   <div id="nav" v-if="['NotFound'].indexOf($route.name)">
     <div class="top-bar">
       <div class="brand">
-        RepoStatus
+        <img src="/img/logo_large.png" alt="logo" height="30" />
       </div>
       <div class="links">
         <router-link to="/">Home</router-link>
