@@ -109,10 +109,11 @@ export default {
         windowFeatures
       );
 
-      const timer = setInterval(() => {
+      const timer = await setInterval(() => {
         if (win.closed) {
           clearInterval(timer);
           console.log("Window closed");
+          return;
         }
       }, 3000);
     },
@@ -147,7 +148,9 @@ export default {
       localStorage.setItem(this.stateStorageName, stateFetched);
 
       // show the new window
-      this.showWindow(stateFetched);
+      await this.showWindow(stateFetched);
+      this.hideModal();
+      return stateFetched;
     },
     handleGithubOauth: function() {
       /**
@@ -160,7 +163,8 @@ export default {
        *
        * If the user is not verified
        */
-      this.handleUserState();
+      const stateExtracted = this.handleUserState();
+      this.$emit("state", stateExtracted);
     }
   },
   mounted() {

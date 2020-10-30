@@ -5,9 +5,10 @@
       ref="listRepoModal"
       @repo="parseRepoSelected"
       :username="getUsernamePassed"
+      :repoList="getRepoList"
     />
     <LinkHandler ref="linkHandlerModal" />
-    <OAuthHandler ref="oauthHandlerModal" />
+    <OAuthHandler ref="oauthHandlerModal" @state="parseStateExtracted" />
     <div class="d-flex justify-content-center py-3 mt-3 mb-5">
       <div class="repo-chooser">
         <div class="public-repo" @click="showPublicRepoChooser">
@@ -50,6 +51,8 @@ import ListRepo from "@/components/ListRepo";
 import LinkHandler from "@/components/LinkHandler";
 import OAuthHandler from "@/components/OAuth";
 
+var jwt = require("jsonwebtoken");
+
 export default {
   name: "InputRepo",
   components: {
@@ -64,7 +67,10 @@ export default {
   data() {
     return {
       usernamePassed: "",
-      repoSelected: ""
+      repoSelected: "",
+      repoListFromState: null,
+      stateUrl: "http://0.0.0.0:5000/state",
+      jwtSecret: process.env.VUE_APP_JWT_SECRET
     };
   },
   methods: {
@@ -102,11 +108,43 @@ export default {
        * is one of the extra options.
        */
       this.$refs.oauthHandlerModal.handleGithubOauth();
+    },
+    getUsernameAndRepo: async function(state) {
+      /**
+       * Get the username and repo using the state
+       * passed.
+       */
+      console.log(this.jwtSecret);
+      const response = await fetch(this.stateUrl, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${jwt.sign(
+            {
+              state: state
+            },
+            this.jwtSecret
+          )}`
+        }
+      });
+      const jsonData = await response.json();
+      this.usernamePassed = jsonData["username"];
+      this.repoListFromState = jsonData["repos"];
+    },
+    parseStateExtracted: async function(state) {
+      /**
+       * Use the state emitted by the OAuth handler
+       * and use it to fetch other necessary details
+       */
+      await this.getUsernameAndRepo(state);
     }
   },
   computed: {
     getUsernamePassed() {
       return this.usernamePassed;
+    },
+    getRepoList() {
+      return this.repoListFromState;
     }
   }
 };

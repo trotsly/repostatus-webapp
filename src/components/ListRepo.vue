@@ -84,6 +84,10 @@ export default {
     username: {
       type: String,
       default: ""
+    },
+    repoList: {
+      type: Array,
+      default: null
     }
   },
   components: {
@@ -135,6 +139,14 @@ export default {
        * request to the API.
        */
       if (this.username == "") return;
+
+      // Check if the repo list is already passed
+      if (this.repoList != null) {
+        this.reposFetched = this.repoList;
+        this.isLoading = false;
+      }
+
+      // Else fetch from the endpoint
       fetch(this.repoEndpoint + this.username)
         .then(response => {
           if (response.status != 200) this.handleNotFound();
