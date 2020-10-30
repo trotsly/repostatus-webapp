@@ -60,7 +60,8 @@ export default {
       stateUrl: "http://0.0.0.0:5000/state",
       clientId: process.env.VUE_APP_CLIENT_ID,
       authUrl: "https://github.com/login/oauth/authorize",
-      stateExtracted: ""
+      stateExtracted: "",
+      isWindowOpen: false
     };
   },
   methods: {
@@ -102,6 +103,7 @@ export default {
        * We will then wait till the new window closes and after that
        * continue
        */
+      this.isWindowOpen = true;
       const windowFeatures =
         "location=yes,height=570,width=520,scrollbars=yes,status=yes";
       const win = window.open(
@@ -113,7 +115,8 @@ export default {
       const timer = await setInterval(() => {
         if (win.closed) {
           clearInterval(timer);
-          this.$emit("state", this.stateExtracted);
+          this.emitState();
+          this.isWindowOpen = false;
           return;
         }
       }, 3000);
@@ -166,6 +169,16 @@ export default {
        */
       const stateExtracted = await this.handleUserState();
       this.stateExtracted = stateExtracted;
+
+      // If the window is not opened, just emit
+      if (!this.isWindowOpen) this.emitState();
+    },
+    emitState: function() {
+      /**
+       * Emit the state extracted from the browser or from the
+       * backend.
+       */
+      this.$emit("state", this.stateExtracted);
     }
   },
   mounted() {
