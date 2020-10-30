@@ -59,7 +59,8 @@ export default {
       stateStorageName: "sessionState",
       stateUrl: "http://0.0.0.0:5000/state",
       clientId: process.env.VUE_APP_CLIENT_ID,
-      authUrl: "https://github.com/login/oauth/authorize"
+      authUrl: "https://github.com/login/oauth/authorize",
+      stateExtracted: ""
     };
   },
   methods: {
@@ -104,7 +105,7 @@ export default {
       const windowFeatures =
         "location=yes,height=570,width=520,scrollbars=yes,status=yes";
       const win = window.open(
-        `${this.authUrl}?state=${state}&client_id=${this.clientId}&scope="repo"`,
+        `${this.authUrl}?state=${state}&client_id=${this.clientId}&scope=repo`,
         "GitHub OAuth",
         windowFeatures
       );
@@ -112,7 +113,7 @@ export default {
       const timer = await setInterval(() => {
         if (win.closed) {
           clearInterval(timer);
-          console.log("Window closed");
+          this.$emit("state", this.stateExtracted);
           return;
         }
       }, 3000);
@@ -164,7 +165,7 @@ export default {
        * If the user is not verified
        */
       const stateExtracted = await this.handleUserState();
-      this.$emit("state", stateExtracted);
+      this.stateExtracted = stateExtracted;
     }
   },
   mounted() {
