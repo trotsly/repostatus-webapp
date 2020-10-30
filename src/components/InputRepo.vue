@@ -109,19 +109,18 @@ export default {
        */
       this.$refs.oauthHandlerModal.handleGithubOauth();
     },
-    getUsernameAndRepo: async function(state) {
+    getUsernameAndRepo: async function(passedState) {
       /**
        * Get the username and repo using the state
        * passed.
        */
-      console.log(this.jwtSecret);
       const response = await fetch(this.stateUrl, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
           Authorization: `Bearer ${jwt.sign(
             {
-              state: state
+              state: passedState
             },
             this.jwtSecret
           )}`
@@ -137,6 +136,7 @@ export default {
        * and use it to fetch other necessary details
        */
       await this.getUsernameAndRepo(state);
+      this.$refs.listRepoModal.showModal();
     }
   },
   computed: {

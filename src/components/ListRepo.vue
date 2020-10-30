@@ -144,6 +144,7 @@ export default {
       if (this.repoList != null) {
         this.reposFetched = this.repoList;
         this.isLoading = false;
+        return;
       }
 
       // Else fetch from the endpoint

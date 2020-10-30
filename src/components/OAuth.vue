@@ -152,7 +152,7 @@ export default {
       this.hideModal();
       return stateFetched;
     },
-    handleGithubOauth: function() {
+    handleGithubOauth: async function() {
       /**
        * Handle the OAuth.
        *
@@ -163,7 +163,7 @@ export default {
        *
        * If the user is not verified
        */
-      const stateExtracted = this.handleUserState();
+      const stateExtracted = await this.handleUserState();
       this.$emit("state", stateExtracted);
     }
   },
