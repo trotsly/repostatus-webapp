@@ -1,0 +1,67 @@
+<template>
+  <div class="happiness-status__container">
+    <div v-if="true" class="animation-container">
+      <h5 class="text">
+        Going through repo's data in order to get the status
+      </h5>
+      <div class="spinner-container">
+        <HalfCircleSpinner
+          :size="60"
+          color="#83C5BE"
+          :animation-duration="1000"
+          class="spinner"
+        />
+      </div>
+    </div>
+    <div v-else class="content">
+      <h5 class="sub-text">Your repo's happiness status is</h5>
+      <h1 class="content-status">Balanced</h1>
+    </div>
+  </div>
+</template>
+
+<script>
+import { HalfCircleSpinner } from "epic-spinners";
+
+export default {
+  name: "HappinessStatus",
+  components: {
+    HalfCircleSpinner
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.happiness-status__container {
+  padding: 5em 1em 2em 1em;
+
+  .animation-container {
+    .text {
+      color: $dark;
+    }
+
+    .spinner-container {
+      margin-top: 2em;
+
+      .spinner {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .content {
+    text-align: left;
+
+    .sub-text {
+      color: $dark;
+    }
+
+    .content-status {
+      font-weight: 500;
+      color: $ming;
+      text-transform: uppercase;
+      margin-top: 1em;
+    }
+  }
+}
+</style>

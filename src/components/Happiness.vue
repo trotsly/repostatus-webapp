@@ -5,16 +5,21 @@
       <Number />
       <Number />
     </div>
+    <div class="status-container">
+      <HappinessStatus />
+    </div>
   </div>
 </template>
 
 <script>
 import Number from "@/components/NumberStats";
+import HappinessStatus from "@/components/HappinessStatus";
 
 export default {
   name: "Happiness",
   components: {
-    Number
+    Number,
+    HappinessStatus
   }
 };
 </script>

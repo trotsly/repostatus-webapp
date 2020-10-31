@@ -2,18 +2,21 @@
   <div class="status">
     <RepoName />
     <Happiness />
+    <Footer />
   </div>
 </template>
 
 <script>
 import RepoName from "@/components/RepoName";
 import Happiness from "@/components/Happiness";
+import Footer from "@/components/Footer";
 
 export default {
   name: "Status",
   components: {
     RepoName,
-    Happiness
+    Happiness,
+    Footer
   }
 };
 </script>
