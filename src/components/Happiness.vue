@@ -12,18 +12,23 @@
     <div class="status-container">
       <HappinessStatus />
     </div>
+    <div class="status-each-container">
+      <StatusEach />
+    </div>
   </div>
 </template>
 
 <script>
 import Number from "@/components/NumberStats";
 import HappinessStatus from "@/components/HappinessStatus";
+import StatusEach from "@/components/StatusEach";
 
 export default {
   name: "Happiness",
   components: {
     Number,
-    HappinessStatus
+    HappinessStatus,
+    StatusEach
   },
   data() {
     return {
@@ -63,6 +68,10 @@ export default {
   }
 
   .numbers-container {
+    display: flex;
+  }
+
+  .status-each-container {
     display: flex;
   }
 }
