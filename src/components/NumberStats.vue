@@ -35,11 +35,23 @@ export default {
     handleLoading() {
       if (this.number == null) return;
       this.isLoading = false;
+    },
+    parseToCommaSeperated: function(numberPassed) {
+      /**
+       * Parse the passed number to comma
+       * seperated string
+       */
+      return Number(numberPassed).toLocaleString("en", {
+        minimumFractionDigits: 2
+      });
     }
   },
   computed: {
     getIsLoading() {
       return this.isLoading;
+    },
+    getNumber() {
+      return this.parseToCommaSeperated(this.nuumber);
     }
   },
   watch: {
@@ -55,6 +67,8 @@ export default {
 <style lang="scss" scoped>
 .number {
   margin-right: 2.5em;
+  padding: 1em;
+
   .number-child {
     text-align: left;
 
@@ -78,6 +92,7 @@ export default {
       .actual-text {
         font-weight: 500;
         transform: translateY(-20px);
+        color: darken($green, 25);
       }
     }
   }

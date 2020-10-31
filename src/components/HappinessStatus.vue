@@ -92,7 +92,7 @@ export default {
       font-weight: 500;
       color: $ming;
       text-transform: uppercase;
-      margin-top: 1em;
+      margin-top: 0.5em;
     }
   }
 }
