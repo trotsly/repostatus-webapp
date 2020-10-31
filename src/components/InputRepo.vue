@@ -157,6 +157,9 @@ export default {
       this.usernamePassed = jsonData["username"];
       this.repoListFromState = jsonData["repos"];
       this.stateUsed = true;
+
+      // Hide the OAuth modal
+      this.$refs.oauthHandlerModal.hideModal();
     },
     parseStateExtracted: async function(state) {
       /**

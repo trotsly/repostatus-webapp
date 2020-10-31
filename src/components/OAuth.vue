@@ -141,7 +141,11 @@ export default {
        */
       const stateStored = localStorage.getItem(this.stateStorageName);
 
-      if (stateStored != null) return stateStored;
+      if (stateStored != null) {
+        // Show the modal even though we get the stat
+        this.showModal();
+        return stateStored;
+      }
 
       // We need to create a new state.
       // Before going forward, open the modal and show a loading animation
@@ -153,7 +157,6 @@ export default {
 
       // show the new window
       await this.showWindow(stateFetched);
-      this.hideModal();
       return stateFetched;
     },
     handleGithubOauth: async function() {
