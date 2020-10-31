@@ -67,6 +67,10 @@ export default {
 .happiness-status__container {
   padding: 3em 1em 2em 1em;
 
+  @media only screen and (max-width: $mobile-breakpoint) {
+    padding-top: 1em;
+  }
+
   .animation-container {
     .text {
       color: $dark;

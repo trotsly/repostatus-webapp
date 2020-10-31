@@ -1,10 +1,17 @@
 <template>
   <div id="repo-name">
-    <p class="repo-text">
+    <div class="icon">
+      <img
+        src="@/assets/github_icon.png"
+        alt="Github Icon"
+        class="github-icon"
+      />
+    </div>
+    <div class="repo-text">
       <span class="user">deepjyoti30</span>
       <span class="seperator">/</span>
       <span class="repo">simber</span>
-    </p>
+    </div>
   </div>
 </template>
 
@@ -16,12 +23,37 @@ export default {
 
 <style lang="scss" scoped>
 #repo-name {
-  padding: 0.5em 1em;
+  padding: 0.5em;
+  display: flex;
+
+  @media only screen and (max-width: $mobile-breakpoint) {
+    padding: 1em 1.5em;
+    margin-top: 2em;
+  }
+
+  .icon {
+    margin-right: 1em;
+
+    .github-icon {
+      width: 40px;
+      margin-top: 10px;
+
+      @media only screen and (max-width: $mobile-breakpoint) {
+        width: 30px;
+        margin-top: 5px;
+      }
+    }
+  }
+
   .repo-text {
-    font-size: 3.5em;
+    font-size: 2.5em;
     text-align: left;
     color: $ming;
     font-weight: 300;
+
+    @media only screen and (max-width: $mobile-breakpoint) {
+      font-size: 1.5em;
+    }
 
     .seperator {
       margin: 0 0.2em;

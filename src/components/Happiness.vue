@@ -136,6 +136,10 @@ export default {
 #stats-container {
   @extend .rounded-cust-sm;
 
+  @media only screen and (max-width: $mobile-breakpoint) {
+    border: none;
+  }
+
   border: 1px solid darken($grey, 8);
   padding: 1em;
 
@@ -152,6 +156,11 @@ export default {
       &.text {
         width: 300px;
         height: 20px;
+
+        @media only screen and (max-width: $mobile-breakpoint) {
+          width: 150px;
+          height: 10px;
+        }
       }
     }
   }
@@ -162,6 +171,16 @@ export default {
 
   .status-each-container {
     display: flex;
+
+    @media only screen and (max-width: $mobile-breakpoint) {
+      flex-direction: column;
+
+      .status-each-el {
+        border-right: none !important;
+        margin: none !important;
+        margin-bottom: 0.5em;
+      }
+    }
 
     .status-each-el {
       margin-right: 1.5em;

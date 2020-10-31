@@ -83,6 +83,11 @@ export default {
 
       .actual-number {
         font-weight: 300;
+        color: $salmon;
+      }
+
+      @media only screen and (max-width: $mobile-breakpoint) {
+        font-size: 2em;
       }
     }
 
@@ -94,6 +99,11 @@ export default {
         font-weight: 500;
         transform: translateY(-20px);
         color: darken($green, 25);
+
+        @media only screen and (max-width: $mobile-breakpoint) {
+          font-size: 0.8em;
+          font-weight: 400;
+        }
       }
     }
   }
@@ -103,13 +113,23 @@ export default {
   @extend .skeleton;
 
   &.skeleton-number {
-    min-width: 250px;
+    width: 250px;
     height: 50px;
+
+    @media only screen and (max-width: $mobile-breakpoint) {
+      width: 70px;
+      height: 35px;
+    }
   }
 
   &.skeleton-text {
     width: 100px;
     height: 25px;
+
+    @media only screen and (max-width: $mobile-breakpoint) {
+      width: 50px;
+      height: 20px;
+    }
   }
 }
 </style>

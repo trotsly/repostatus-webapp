@@ -26,7 +26,7 @@ export default {
   @media only screen and (min-width: $mobile-breakpoint) {
     max-width: 65%;
     margin: 0 auto;
-    padding-top: 3em;
+    padding-top: 2em;
   }
 }
 </style>

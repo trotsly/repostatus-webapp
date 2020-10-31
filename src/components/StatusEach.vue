@@ -69,12 +69,20 @@ export default {
       padding: 0;
       margin: 0;
       color: $salmon;
+
+      @media only screen and (max-width: $mobile-breakpoint) {
+        font-size: 2em;
+      }
     }
 
     .status-text {
       text-transform: uppercase;
       font-weight: 500;
       color: $ming;
+
+      @media only screen and (max-width: $mobile-breakpoint) {
+        font-size: 1em;
+      }
     }
   }
 
@@ -91,6 +99,17 @@ export default {
         width: 150px;
         height: 20px;
       }
+    }
+  }
+}
+
+@media only scren and (max-width: $mobile-breakpoint) {
+  .status-name {
+    font-size: 2em;
+  }
+
+  .status-animation {
+    .status-animated {
     }
   }
 }
