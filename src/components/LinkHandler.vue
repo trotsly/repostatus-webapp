@@ -126,7 +126,10 @@ export default {
        */
       if (!this.linkValid) return;
 
-      this.$emit("repourl", this.linkEntered);
+      this.$emit(
+        "repourl",
+        this.linkEntered.replace(/^https?:\/\/github.com\//g, "")
+      );
       this.hideModal();
     }
   },
