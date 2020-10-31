@@ -1,0 +1,35 @@
+.skeleton {
+    @extend .rounded-cust-sm;
+
+    background: linear-gradient(90deg, lighten($green, 30), lighten($green, 25), lighten($green, 30));
+	animation-name: load;
+	animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	animation-direction: forwards;
+	animation-timing-function: linear;
+	background-size: 200% 100%;
+
+	&.block {
+		width: 200px;
+		height: 20px;
+
+		&.small {
+			width: 150px;
+		}
+	}
+
+	&.circle {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+	}
+}
+
+@keyframes load {
+	from {
+		background-position: 100% 0%;
+	}
+	to {
+		background-position: -100% 0%;
+	}
+}
