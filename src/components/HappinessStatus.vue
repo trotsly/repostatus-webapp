@@ -6,7 +6,7 @@
       </h5>
       <div class="spinner-container">
         <HalfCircleSpinner
-          :size="60"
+          :size="30"
           color="#83C5BE"
           :animation-duration="1000"
           class="spinner"
@@ -74,6 +74,7 @@ export default {
 
     .spinner-container {
       margin-top: 2em;
+      margin-bottom: 1em;
 
       .spinner {
         margin: 0 auto;

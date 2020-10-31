@@ -13,7 +13,9 @@
       <HappinessStatus />
     </div>
     <div class="status-each-container">
-      <StatusEach />
+      <StatusEach class="status-each-el" />
+      <StatusEach class="status-each-el" />
+      <StatusEach class="status-each-el" />
     </div>
   </div>
 </template>
@@ -47,7 +49,7 @@ export default {
 #stats-container {
   @extend .rounded-cust-sm;
 
-  border: 1px solid $grey;
+  border: 1px solid darken($grey, 8);
   padding: 1em;
 
   .data-text {
@@ -73,6 +75,17 @@ export default {
 
   .status-each-container {
     display: flex;
+
+    .status-each-el {
+      margin-right: 1.5em;
+      padding-right: 1.5em;
+
+      border-right: 2px solid $green;
+    }
+
+    .status-each-el:last-child {
+      border-right: none;
+    }
   }
 }
 </style>

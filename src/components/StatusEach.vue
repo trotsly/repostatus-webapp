@@ -59,7 +59,8 @@ export default {
 <style lang="scss" scoped>
 .status-each__container {
   .status-each {
-    padding: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
     text-align: left;
 
     .status-name {
