@@ -7,7 +7,7 @@
       :username="getUsernamePassed"
       :repoList="getRepoList"
     />
-    <LinkHandler ref="linkHandlerModal" />
+    <LinkHandler @repourl="parseRepoUrl" ref="linkHandlerModal" />
     <OAuthHandler ref="oauthHandlerModal" @state="parseStateExtracted" />
     <div class="d-flex justify-content-center py-3 mt-3 mb-5">
       <div class="repo-chooser">
@@ -67,7 +67,8 @@ export default {
   data() {
     return {
       usernamePassed: "",
-      repoSelected: "",
+      repoSelected: null,
+      repoUrl: "",
       repoListFromState: null,
       stateUrl: "http://0.0.0.0:5000/state",
       jwtSecret: process.env.VUE_APP_JWT_SECRET
@@ -95,6 +96,16 @@ export default {
        * it can be used in the next step.
        */
       this.repoSelected = repo;
+      this.repoUrl = repo["full_name"];
+    },
+    parseRepoUrl: function(url) {
+      /**
+       * Parse the repo URL without the object.
+       *
+       * This function is to be used when the link handler
+       * returns the selected repo.
+       */
+      this.repoUrl = url;
     },
     showLinkHandler: function() {
       /**

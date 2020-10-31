@@ -35,10 +35,15 @@
                   v-model="linkEntered"
                   @focus="showLink"
                   :input="verifyLink()"
+                  @keyup.enter="selectRepoUrl"
                 />
                 <CheckCircleIcon v-if="isLinkValid" class="check-icon" />
               </div>
-              <button :disabled="!isLinkValid" class="select-link">
+              <button
+                :disabled="!isLinkValid"
+                class="select-link"
+                @click="selectRepoUrl"
+              >
                 Get Status
               </button>
             </div>
@@ -78,6 +83,9 @@ export default {
         awaitOpenAnimation: true
       });
     },
+    hideModal() {
+      MicroModal.close("modal-frame-link");
+    },
     listenClose() {
       /**
        * Listen to the close button
@@ -111,6 +119,15 @@ export default {
           /^https?:\/\/github.com\/[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+$/g
         )
       );
+    },
+    selectRepoUrl() {
+      /**
+       * Select the url and emit it.
+       */
+      if (!this.linkValid) return;
+
+      this.$emit("repourl", this.linkEntered);
+      this.hideModal();
     }
   },
   computed: {
