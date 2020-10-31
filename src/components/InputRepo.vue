@@ -70,6 +70,7 @@ export default {
       repoSelected: null,
       repoUrl: "",
       repoListFromState: null,
+      stateUsed: false,
       stateUrl: "http://0.0.0.0:5000/state",
       jwtSecret: process.env.VUE_APP_JWT_SECRET
     };
@@ -116,7 +117,11 @@ export default {
        *
        * We need to emit an object that will contain the repo
        */
-      this.$emit("repo", this.repoUrl);
+      const emittableObj = {
+        repo: this.repoUrl,
+        stateUsed: this.stateUsed
+      };
+      this.$emit("repo", emittableObj);
     },
     showLinkHandler: function() {
       /**
@@ -151,6 +156,7 @@ export default {
       const jsonData = await response.json();
       this.usernamePassed = jsonData["username"];
       this.repoListFromState = jsonData["repos"];
+      this.stateUsed = true;
     },
     parseStateExtracted: async function(state) {
       /**

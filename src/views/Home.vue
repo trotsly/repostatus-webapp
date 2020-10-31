@@ -29,7 +29,8 @@ export default {
        * We need to store the repo in session storage and
        * change the route to the status view.
        */
-      sessionStorage.setItem("stateRepo", repoObject);
+      sessionStorage.setItem("stateRepo", repoObject.repo);
+      sessionStorage.setItem("stateUsed", repoObject.stateUsed);
       this.$router.push({ path: "/status" });
     }
   }
