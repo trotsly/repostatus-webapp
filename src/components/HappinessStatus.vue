@@ -15,7 +15,7 @@
     </div>
     <div v-else class="content">
       <h5 class="sub-text">Your repo's happiness status is</h5>
-      <h1 class="content-status">Balanced</h1>
+      <h1 class="content-status">{{ getStatus }}</h1>
     </div>
   </div>
 </template>

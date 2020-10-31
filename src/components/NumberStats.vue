@@ -3,11 +3,11 @@
     <div class="number-child">
       <div class="number-text">
         <div v-if="getIsLoading" class="skeleton-child skeleton-number"></div>
-        <div v-else class="actual-number">45678</div>
+        <div v-else class="actual-number">{{ getNumber }}</div>
       </div>
       <div class="name-text">
         <div v-if="getIsLoading" class="skeleton-child skeleton-text"></div>
-        <div v-else class="actual-text">Words</div>
+        <div v-else class="actual-text">{{ getName }}</div>
       </div>
     </div>
   </div>
@@ -41,9 +41,7 @@ export default {
        * Parse the passed number to comma
        * seperated string
        */
-      return Number(numberPassed).toLocaleString("en", {
-        minimumFractionDigits: 2
-      });
+      return Number(numberPassed).toLocaleString("en");
     }
   },
   computed: {
@@ -51,7 +49,10 @@ export default {
       return this.isLoading;
     },
     getNumber() {
-      return this.parseToCommaSeperated(this.nuumber);
+      return this.parseToCommaSeperated(this.number);
+    },
+    getName() {
+      return this.name;
     }
   },
   watch: {

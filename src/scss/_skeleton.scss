@@ -1,7 +1,7 @@
 .skeleton {
     @extend .rounded-cust-sm;
 
-    background: linear-gradient(90deg, lighten($green, 25), lighten($green, 20), lighten($green, 25));
+    background: linear-gradient(90deg, lighten($green, 25), lighten($green, 15), lighten($green, 25));
 	animation-name: load;
 	animation-duration: 1.5s;
 	animation-iteration-count: infinite;

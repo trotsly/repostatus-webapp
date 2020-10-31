@@ -5,8 +5,8 @@
       <h5 class="status-animated text"></h5>
     </div>
     <div v-else class="status-each">
-      <h1 class="status-name">Issues</h1>
-      <h5 class="status-text">Balanced</h5>
+      <h1 class="status-name">{{ getName }}</h1>
+      <h5 class="status-text">{{ getText }}</h5>
     </div>
   </div>
 </template>
