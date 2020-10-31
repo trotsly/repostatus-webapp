@@ -1,6 +1,6 @@
 <template>
   <div class="happiness-status__container">
-    <div v-if="true" class="animation-container">
+    <div v-if="getIsLoading" class="animation-container">
       <h5 class="text">
         Going through repo's data in order to get the status
       </h5>
@@ -27,6 +27,38 @@ export default {
   name: "HappinessStatus",
   components: {
     HalfCircleSpinner
+  },
+  props: {
+    status: {
+      type: String,
+      default: null
+    }
+  },
+  data() {
+    return {
+      isLoading: true
+    };
+  },
+  methods: {
+    handleAnimtion: function() {
+      if (this.status == null) return;
+      this.isLoading = false;
+    }
+  },
+  computed: {
+    getStatus() {
+      return this.status;
+    },
+    getIsLoading() {
+      return this.isLoading;
+    }
+  },
+  watch: {
+    status: {
+      handler() {
+        this.handleAnimtion();
+      }
+    }
   }
 };
 </script>
