@@ -97,6 +97,7 @@ export default {
        */
       this.repoSelected = repo;
       this.repoUrl = repo["full_name"];
+      this.emitAndContinue();
     },
     parseRepoUrl: function(url) {
       /**
@@ -106,6 +107,16 @@ export default {
        * returns the selected repo.
        */
       this.repoUrl = url;
+      this.emitAndContinue();
+    },
+    emitAndContinue: function() {
+      /**
+       * Emit the repo and the state and accordingly let
+       * the parent handle.
+       *
+       * We need to emit an object that will contain the repo
+       */
+      this.$emit("repo", this.repoUrl);
     },
     showLinkHandler: function() {
       /**

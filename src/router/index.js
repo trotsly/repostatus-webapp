@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Status from "../views/Status.vue";
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,11 @@ const routes = [
     path: "/support",
     name: "Support",
     component: () => import("../views/Support.vue")
+  },
+  {
+    path: "/status",
+    name: "Status",
+    component: Status
   },
   {
     path: "*",
