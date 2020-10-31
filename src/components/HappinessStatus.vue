@@ -65,7 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 .happiness-status__container {
-  padding: 5em 1em 2em 1em;
+  padding: 3em 1em 2em 1em;
 
   .animation-container {
     .text {

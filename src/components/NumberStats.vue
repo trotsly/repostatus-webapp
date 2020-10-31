@@ -67,7 +67,7 @@ export default {
 <style lang="scss" scoped>
 .number {
   margin-right: 2.5em;
-  padding: 1em;
+  padding-left: 1em;
 
   .number-child {
     text-align: left;

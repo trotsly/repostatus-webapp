@@ -1,5 +1,9 @@
 <template>
   <div id="stats-container">
+    <div class="data-text">
+      <h5 v-if="getIsLoading" class="text-animation text"></h5>
+      <h5 v-else>We went through</h5>
+    </div>
     <div class="numbers-container">
       <Number />
       <Number />
@@ -20,6 +24,16 @@ export default {
   components: {
     Number,
     HappinessStatus
+  },
+  data() {
+    return {
+      isLoading: true
+    };
+  },
+  computed: {
+    getIsLoading() {
+      return this.isLoading;
+    }
   }
 };
 </script>
@@ -30,6 +44,23 @@ export default {
 
   border: 1px solid $grey;
   padding: 1em;
+
+  .data-text {
+    text-align: left;
+    margin: 0;
+    padding-left: 1em;
+    color: $dark;
+    font-weight: 400;
+
+    .text-animation {
+      @extend .skeleton;
+
+      &.text {
+        width: 100px;
+        height: 20px;
+      }
+    }
+  }
 
   .numbers-container {
     display: flex;
