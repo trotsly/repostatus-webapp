@@ -12,7 +12,10 @@
       <span class="seperator">/</span>
       <span class="repo">{{ getReponame }}</span>
     </div>
-    <div class="badge-container border px-5"></div>
+    <div class="badge-container">
+      <div v-if="getBadgeLoading" class="animated-load animated-badge"></div>
+      <img v-else :src="getBadgeUrl" alt="Badge" />
+    </div>
   </div>
 </template>
 
@@ -25,11 +28,25 @@ export default {
       default: ""
     }
   },
+  data() {
+    return {
+      isBadgeLoading: true,
+      badgeUrl: "http://0.0.0.0:5000/badge"
+    };
+  },
   methods: {
     fetchBadge: function() {
       /**
        * Fetch the badge for the passed repo name
        */
+      this.badgeUrl +=
+        "?" +
+        new URLSearchParams({
+          repo: this.reponame,
+          style: "for-the-badge"
+        });
+
+      this.isBadgeLoading = false;
     }
   },
   computed: {
@@ -38,6 +55,12 @@ export default {
     },
     getReponame() {
       return this.reponame ? this.reponame.split("/")[1] : "";
+    },
+    getBadgeLoading() {
+      return this.isBadgeLoading;
+    },
+    getBadgeUrl() {
+      return this.badgeUrl;
     }
   }
 };
@@ -83,7 +106,17 @@ export default {
   }
 
   .badge-container {
+    margin: auto 0;
     margin-left: 2.5em;
+
+    .animated-load {
+      @extend .skeleton;
+
+      &.animated-badge {
+        height: 35px;
+        width: 125px;
+      }
+    }
   }
 }
 </style>

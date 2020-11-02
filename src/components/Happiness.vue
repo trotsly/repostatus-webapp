@@ -100,6 +100,9 @@ export default {
       // Disable the loading animation as well
       this.isLoading = false;
       this.dataFetched = jsonData;
+
+      // Emit the badge message
+      this.emitBadgeMessage();
     },
     getNumber: function(numberType) {
       /**
@@ -126,6 +129,12 @@ export default {
        * Emit the passed code and json
        */
       this.$emit("error", responsePassed);
+    },
+    emitBadgeMessage: function() {
+      /**
+       * Emit a message to fetch the badge from the backend.
+       */
+      this.$emit("badge", true);
     }
   },
   computed: {

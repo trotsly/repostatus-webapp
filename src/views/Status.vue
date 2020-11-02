@@ -1,9 +1,10 @@
 <template>
   <div class="status">
-    <RepoName :reponame="getStateRepo" />
+    <RepoName ref="reponame" :reponame="getStateRepo" />
     <Happiness
       v-if="!getIsError"
       @error="handleError"
+      @badge="handleBadge"
       :isStateUsed="getStateUsed"
       :stateRepo="getStateRepo"
     />
@@ -59,6 +60,9 @@ export default {
        */
       if (!this.stateRepo || !this.isStateUsed)
         this.$router.push({ path: "/" });
+    },
+    handleBadge: function() {
+      this.$refs.reponame.fetchBadge();
     }
   },
   computed: {
