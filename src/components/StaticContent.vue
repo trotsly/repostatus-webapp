@@ -91,6 +91,35 @@ export default {
         text-decoration: underline;
       }
     }
+
+    table {
+      td {
+        min-width: 100px;
+        padding: 10px 0;
+      }
+
+      thead {
+        tr {
+          border-bottom: 3px solid $ming;
+        }
+      }
+      tbody {
+        tr {
+          border-bottom: 1px solid $green;
+        }
+
+        tr:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+
+    code {
+      background: $grey;
+      padding: 10px 5px;
+      @extend .rounded-cust-sm;
+      color: $salmon;
+    }
   }
 }
 </style>
