@@ -93,6 +93,8 @@ export default {
     }
 
     table {
+      margin-bottom: 2em;
+
       td {
         min-width: 100px;
         padding: 10px 0;
@@ -114,11 +116,17 @@ export default {
       }
     }
 
-    code {
+    code,
+    pre {
       background: $grey;
       padding: 10px 5px;
       @extend .rounded-cust-sm;
       color: $salmon;
+      margin: 1.5em 0;
+    }
+
+    img {
+      margin: 0.5em 0 1.5em 0;
     }
   }
 }
