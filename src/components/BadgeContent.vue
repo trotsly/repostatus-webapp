@@ -3,7 +3,7 @@
     <h3 class="content-subtext">We also support badges</h3>
     <h1 class="content-text">So that you can flex!</h1>
     <div class="badge-btn-container">
-      <router-link to="/badge" class="badge-btn border" tag="button">
+      <router-link to="/badge" class="badge-btn" tag="button">
         <div class="left-half">Get the</div>
         <div class="right-half">Badge</div>
       </router-link>
@@ -31,6 +31,18 @@ export default {
     font-weight: 500;
     text-transform: uppercase;
     color: $ming;
+  }
+
+  @media only screen and (max-width: $mobile-breakpoint) {
+    .content-subtext {
+      font-size: 1.5em;
+    }
+
+    .content-text {
+      font-size: 2em;
+    }
+
+    padding: 3em 0.5em;
   }
 
   .badge-btn-container {
