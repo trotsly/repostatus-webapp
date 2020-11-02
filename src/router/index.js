@@ -32,6 +32,11 @@ const routes = [
     component: Status
   },
   {
+    path: "/badge",
+    name: "Badge",
+    component: () => import("../views/Badge.vue")
+  },
+  {
     path: "*",
     name: "Not Found",
     component: () => import("../views/PageNotFound.vue")

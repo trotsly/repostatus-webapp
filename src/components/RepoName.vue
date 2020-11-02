@@ -14,7 +14,11 @@
     </div>
     <div class="badge-container">
       <div v-if="getBadgeLoading" class="animated-load animated-badge"></div>
-      <img v-else :src="getBadgeUrl" alt="Badge" />
+      <div v-else>
+        <router-link to="/badge">
+          <img :src="getBadgeUrl" alt="Repostatus badge" />
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -109,12 +113,20 @@ export default {
     margin: auto 0;
     margin-left: 2.5em;
 
+    @media only screen and (max-width: $mobile-breakpoint) {
+      margin-left: 1.2em;
+    }
+
     .animated-load {
       @extend .skeleton;
 
       &.animated-badge {
         height: 35px;
         width: 125px;
+
+        @media only screen and (max-width: $mobile-breakpoint) {
+          width: 75px;
+        }
       }
     }
   }
