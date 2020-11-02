@@ -34,10 +34,10 @@ export default {
   },
   computed: {
     getUsername() {
-      return this.reponame.split("/")[0];
+      return this.reponame ? this.reponame.split("/")[0] : "";
     },
     getReponame() {
-      return this.reponame.split("/")[1];
+      return this.reponame ? this.reponame.split("/")[1] : "";
     }
   }
 };

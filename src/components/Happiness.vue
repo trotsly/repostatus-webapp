@@ -126,18 +126,6 @@ export default {
        * Emit the passed code and json
        */
       this.$emit("error", responsePassed);
-    },
-    handleInvalidState: function() {
-      /**
-       * Handle the errors if invalid state is passed.
-       *
-       * This would mostly happen if someone opens the status
-       * endpoint without going through the whole process.
-       *
-       * In this case, we need to redirect the user to the home page.
-       */
-      if (!this.stateRepo || !this.isStateUsed)
-        this.$router.push({ path: "/" });
     }
   },
   computed: {
@@ -153,7 +141,6 @@ export default {
     }
   },
   mounted() {
-    this.handleInvalidState();
     this.fetchDataUpstream();
   }
 };

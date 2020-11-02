@@ -47,6 +47,18 @@ export default {
       this.errorMessage = responseJson.detail;
 
       this.isError = true;
+    },
+    handleInvalidState: function() {
+      /**
+       * Handle the errors if invalid state is passed.
+       *
+       * This would mostly happen if someone opens the status
+       * endpoint without going through the whole process.
+       *
+       * In this case, we need to redirect the user to the home page.
+       */
+      if (!this.stateRepo || !this.isStateUsed)
+        this.$router.push({ path: "/" });
     }
   },
   computed: {
@@ -65,6 +77,9 @@ export default {
     getStateRepo() {
       return this.stateRepo;
     }
+  },
+  mounted() {
+    this.handleInvalidState();
   }
 };
 </script>
