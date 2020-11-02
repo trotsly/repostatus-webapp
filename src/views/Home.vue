@@ -3,6 +3,7 @@
     <Header />
     <InputRepo @repo="parseRepo" />
     <Features />
+    <Badge />
     <Footer />
   </div>
 </template>
@@ -12,6 +13,7 @@ import Header from "@/components/Header";
 import InputRepo from "@/components/InputRepo";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
+import Badge from "@/components/BadgeContent";
 
 export default {
   name: "Home",
@@ -19,7 +21,8 @@ export default {
     Header,
     InputRepo,
     Features,
-    Footer
+    Footer,
+    Badge
   },
   methods: {
     parseRepo: function(repoObject) {

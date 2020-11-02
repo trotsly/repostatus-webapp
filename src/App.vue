@@ -13,6 +13,11 @@ export default {
   name: "App",
   components: {
     Navbar
+  },
+  watch: {
+    $route(to) {
+      document.title = `${to.name} | repostatus` || "repostatus";
+    }
   }
 };
 </script>
