@@ -44,12 +44,20 @@ export default {
     HappinessStatus,
     StatusEach
   },
+  props: {
+    isStateUsed: {
+      type: String,
+      default: null
+    },
+    stateRepo: {
+      type: String,
+      default: null
+    }
+  },
   data() {
     return {
       isLoading: true,
       dataUrl: "http://0.0.0.0:5000/status",
-      isStateUsed: sessionStorage.getItem("stateUsed"),
-      stateRepo: sessionStorage.getItem("stateRepo"),
       sessionState: localStorage.getItem("sessionState"),
       dataFetched: {}
     };

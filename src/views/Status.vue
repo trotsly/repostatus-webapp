@@ -1,7 +1,12 @@
 <template>
   <div class="status">
-    <RepoName />
-    <Happiness v-if="!getIsError" @error="handleError" />
+    <RepoName :reponame="getStateRepo" />
+    <Happiness
+      v-if="!getIsError"
+      @error="handleError"
+      :isStateUsed="getStateUsed"
+      :stateRepo="getStateRepo"
+    />
     <Error v-else :code="getErrorCode" :message="getErrorMessage" />
     <Footer />
   </div>
@@ -25,7 +30,9 @@ export default {
     return {
       isError: false,
       errorCode: null,
-      errorMessage: ""
+      errorMessage: "",
+      isStateUsed: sessionStorage.getItem("stateUsed"),
+      stateRepo: sessionStorage.getItem("stateRepo")
     };
   },
   methods: {
@@ -51,6 +58,12 @@ export default {
     },
     getIsError() {
       return this.isError;
+    },
+    getStateUsed() {
+      return this.isStateUsed;
+    },
+    getStateRepo() {
+      return this.stateRepo;
     }
   }
 };

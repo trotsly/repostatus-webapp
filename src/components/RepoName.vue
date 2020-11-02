@@ -8,16 +8,38 @@
       />
     </div>
     <div class="repo-text">
-      <span class="user">deepjyoti30</span>
+      <span class="user">{{ getUsername }}</span>
       <span class="seperator">/</span>
-      <span class="repo">simber</span>
+      <span class="repo">{{ getReponame }}</span>
     </div>
+    <div class="badge-container border px-5"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "RepoName"
+  name: "RepoName",
+  props: {
+    reponame: {
+      type: String,
+      default: ""
+    }
+  },
+  methods: {
+    fetchBadge: function() {
+      /**
+       * Fetch the badge for the passed repo name
+       */
+    }
+  },
+  computed: {
+    getUsername() {
+      return this.reponame.split("/")[0];
+    },
+    getReponame() {
+      return this.reponame.split("/")[1];
+    }
+  }
 };
 </script>
 
@@ -58,6 +80,10 @@ export default {
     .seperator {
       margin: 0 0.2em;
     }
+  }
+
+  .badge-container {
+    margin-left: 2.5em;
   }
 }
 </style>
