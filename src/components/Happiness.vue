@@ -83,7 +83,7 @@ export default {
 
       // Check if response was invalid
       if (response.status != 200) {
-        console.log(await response.json());
+        this.emitErrorMessage(response);
         return;
       }
 
@@ -112,6 +112,12 @@ export default {
       } catch (err) {
         return null;
       }
+    },
+    emitErrorMessage: function(responsePassed) {
+      /**
+       * Emit the passed code and json
+       */
+      this.$emit("error", responsePassed);
     }
   },
   computed: {
