@@ -37,6 +37,11 @@ const routes = [
     component: () => import("../views/Badge.vue")
   },
   {
+    path: "/api",
+    name: "API",
+    component: () => import("../views/API.vue")
+  },
+  {
     path: "*",
     name: "Not Found",
     component: () => import("../views/PageNotFound.vue")

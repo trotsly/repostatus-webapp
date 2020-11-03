@@ -123,10 +123,26 @@ export default {
       @extend .rounded-cust-sm;
       color: $salmon;
       margin: 1.5em 0;
+
+      code {
+        padding: 0;
+      }
     }
 
     img {
       margin: 0.5em 0 1.5em 0;
+    }
+
+    blockquote {
+      @extend .rounded-cust-sm;
+
+      margin: 2em 0;
+      background: $green;
+
+      p {
+        margin: 10px;
+        color: $black;
+      }
     }
   }
 }

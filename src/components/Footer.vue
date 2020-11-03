@@ -7,13 +7,13 @@
       <div class="links">
         <ul class="list-inline">
           <li class="list-inline-item">
-            <a href="/privacy">Privacy Policy</a>
+            <router-link to="/privacy">Privacy Policy</router-link>
           </li>
           <li class="list-inline-item">
-            <a href="">API</a>
+            <router-link to="api">API</router-link>
           </li>
           <li class="list-inline-item">
-            <a href="">Contact</a>
+            <a href="mailto:hey@deepjyoti30.dev">Contact</a>
           </li>
         </ul>
       </div>
