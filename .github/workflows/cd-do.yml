@@ -14,4 +14,4 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.KEY }}
-          script: cd ytmdl-web && git pull origin master && npm install && npm run build
+          script: cd repostatus-webapp && git pull origin master && npm install && npm run build
