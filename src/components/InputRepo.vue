@@ -71,7 +71,7 @@ export default {
       repoUrl: "",
       repoListFromState: null,
       stateUsed: false,
-      stateUrl: "http://0.0.0.0:5000/state",
+      stateUrl: "https://apis.deepjyoti30.dev/repostatus/state",
       jwtSecret: process.env.VUE_APP_JWT_SECRET
     };
   },

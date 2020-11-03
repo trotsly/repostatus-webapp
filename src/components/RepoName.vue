@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       isBadgeLoading: true,
-      badgeUrl: "http://0.0.0.0:5000/badge"
+      badgeUrl: "https://apis.deepjyoti30.dev/repostatus/badge"
     };
   },
   methods: {

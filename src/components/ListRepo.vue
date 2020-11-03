@@ -103,7 +103,7 @@ export default {
       isLoading: true,
       reposFetched: ["nana", "fancyhaha"],
       repoSelectedIndex: -1,
-      repoEndpoint: "http://0.0.0.0:5000/repos/"
+      repoEndpoint: "https://apis.deepjyoti30.dev/repostatus/repos/"
     };
   },
   methods: {

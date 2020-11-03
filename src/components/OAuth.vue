@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       stateStorageName: "sessionState",
-      stateUrl: "http://0.0.0.0:5000/state",
+      stateUrl: "https://apis.deepjyoti30.dev/repostatus/state",
       clientId: process.env.VUE_APP_CLIENT_ID,
       authUrl: "https://github.com/login/oauth/authorize",
       stateExtracted: "",

@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       isLoading: true,
-      dataUrl: "http://0.0.0.0:5000/status",
+      dataUrl: "https://apis.deepjyoti30.dev/repostatus/status",
       sessionState: localStorage.getItem("sessionState"),
       dataFetched: {}
     };
