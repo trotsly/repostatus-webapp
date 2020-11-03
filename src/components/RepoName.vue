@@ -1,16 +1,18 @@
 <template>
   <div id="repo-name">
-    <div class="icon">
-      <img
-        src="@/assets/github_icon.png"
-        alt="Github Icon"
-        class="github-icon"
-      />
-    </div>
-    <div class="repo-text">
-      <span class="user">{{ getUsername }}</span>
-      <span class="seperator">/</span>
-      <span class="repo">{{ getReponame }}</span>
+    <div class="repo-name-container">
+      <div class="icon">
+        <img
+          src="@/assets/github_icon.png"
+          alt="Github Icon"
+          class="github-icon"
+        />
+      </div>
+      <div class="repo-text">
+        <span class="user">{{ getUsername }}</span>
+        <span class="seperator">/</span>
+        <span class="repo">{{ getReponame }}</span>
+      </div>
     </div>
     <div class="badge-container">
       <div v-if="getBadgeLoading" class="animated-load animated-badge"></div>
@@ -78,34 +80,38 @@ export default {
   @media only screen and (max-width: $mobile-breakpoint) {
     padding: 1em 1.5em;
     margin-top: 2em;
+    flex-direction: column;
   }
 
-  .icon {
-    margin-right: 1em;
+  .repo-name-container {
+    display: flex;
+    .icon {
+      margin-right: 1em;
 
-    .github-icon {
-      width: 40px;
-      margin-top: 10px;
+      .github-icon {
+        width: 40px;
+        margin-top: 10px;
 
-      @media only screen and (max-width: $mobile-breakpoint) {
-        width: 30px;
-        margin-top: 5px;
+        @media only screen and (max-width: $mobile-breakpoint) {
+          width: 30px;
+          margin-top: 5px;
+        }
       }
     }
-  }
 
-  .repo-text {
-    font-size: 2.5em;
-    text-align: left;
-    color: $ming;
-    font-weight: 300;
+    .repo-text {
+      font-size: 2.5em;
+      text-align: left;
+      color: $ming;
+      font-weight: 300;
 
-    @media only screen and (max-width: $mobile-breakpoint) {
-      font-size: 1.5em;
-    }
+      @media only screen and (max-width: $mobile-breakpoint) {
+        font-size: 1.5em;
+      }
 
-    .seperator {
-      margin: 0 0.2em;
+      .seperator {
+        margin: 0 0.2em;
+      }
     }
   }
 
@@ -114,7 +120,10 @@ export default {
     margin-left: 2.5em;
 
     @media only screen and (max-width: $mobile-breakpoint) {
-      margin-left: 1.2em;
+      margin-left: 0;
+      margin-top: 2em;
+
+      display: flex;
     }
 
     .animated-load {
