@@ -25,7 +25,7 @@ curl "https://apis.deepjyoti30.dev/repostatus/badge?repo=deepjyoti30%2Fdots"
 
 Above will return the following badge
 
-<img src="http://localhost:5000/badge?repo=deepjyoti30%2Fdots">
+<img src="https://apis.deepjyoti30.dev/repostatus/badge?repo=deepjyoti30%2Fdots">
 
 If you want to use the `for-the-badge` style, pass it in the following way
 
@@ -33,7 +33,7 @@ If you want to use the `for-the-badge` style, pass it in the following way
 curl "https://apis.deepjyoti30.dev/repostatus/badge?repo=deepjyoti30%2Fdots&style=for-the-badge"
 ```
 
-<img src="http://localhost:5000/badge?repo=deepjyoti30%2Fdots&style=for-the-badge">
+<img src="https://apis.deepjyoti30.dev/repostatus/badge?repo=deepjyoti30%2Fdots&style=for-the-badge">
 
 ## Cache
 
