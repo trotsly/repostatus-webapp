@@ -7,5 +7,6 @@ module.exports = {
         prependData: `@import "@/scss/app.scss";`
       }
     }
-  }
+  },
+  outputDir: path.resolve("/var/www/repostatus")
 };
