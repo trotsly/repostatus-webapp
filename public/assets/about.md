@@ -16,6 +16,6 @@ Once that's done, we run a sentiment analysis engine on those contents and we pr
 
 ### What Else?
 
-We also have a [public API]() since we wondered people might like to use it for their projects.
+We also have a [public API](/api) since we wondered people might like to use it for their projects.
 
 Another exciting thing we provide are the badges. So you must have seen (even used) these badgy things on GitHub repo's. So why not a badge that will show how happy your repo is?
