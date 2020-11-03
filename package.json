@@ -15,6 +15,7 @@
     "micromodal": "^0.4.6",
     "vue": "^2.6.11",
     "vue-feather-icons": "^5.1.0",
+    "vue-head": "^2.2.0",
     "vue-progressbar": "^0.7.5",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.2.0"

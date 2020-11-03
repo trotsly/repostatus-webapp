@@ -1,24 +1,20 @@
 # repostatus-webapp
 
-## Project setup
-```
-npm install
-```
+## Run the web app locally
 
-### Compiles and hot-reloads for development
-```
+```console
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Environment files
 
-### Lints and fixes files
-```
-npm run lint
-```
+In order to make sure the app runs properly, you'll need to pass an `.env` file.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+If you want to run the app on production (`npm run build`), create the file as `.env.production.local`. If you want to run it locally (`npm run serve`), create teh file as `.env.development.local`.
+
+The file should contain the following variables
+
+```
+VUE_APP_CLIENT_ID=<github client id>
+VUE_APP_JWT_SECRET=<jwt secret>
+```

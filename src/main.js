@@ -3,9 +3,11 @@ import App from "./App.vue";
 import router from "./router";
 import VueProgressBar from "vue-progressbar";
 import VueResource from "vue-resource";
+import VueHead from "vue-head";
 
 Vue.config.productionTip = false;
 
+Vue.use(VueHead);
 Vue.use(VueProgressBar, {
   color: "#83C5BE",
   failedColor: "#F44336",
