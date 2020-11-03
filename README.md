@@ -1,9 +1,15 @@
-# repostatus-webapp
+<div align="center">
+<img src=".github/logo_large.png" alt="repostatus logo">
+<br>
+<br>
+<img src=".github/repostatus.jpg" alt="Preview">
+<br><br>
+</div>
 
 ## Run the web app locally
 
 ```console
-npm run serve
+npm i && npm run serve
 ```
 
 ## Environment files
