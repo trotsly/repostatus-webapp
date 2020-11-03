@@ -2,8 +2,9 @@
 <img src=".github/logo_large.png" alt="repostatus logo">
 <br>
 <br>
-<img src=".github/repostatus.jpg" alt="Preview">
+<h2><i>Get Happiness status of your repo</i></h2>
 <br><br>
+<img src="https://apis.deepjyoti30.dev/repostatus/badge?repo=trotsly%2Frepostatus-webapp&style=for-the-badge" alt="Status of repostatus">
 </div>
 
 ## Run the web app locally
