@@ -7,6 +7,10 @@
 <img src="https://apis.deepjyoti30.dev/repostatus/badge?repo=trotsly%2Frepostatus-webapp&style=for-the-badge" alt="Status of repostatus">
 </div>
 
+## What we do?
+
+We consider various parts of the repo like commit messages, comments on issues, pulls etc and run a sentiment analysis engine on the data in order to find out the happiens status.
+
 ## Run the web app locally
 
 ```console
