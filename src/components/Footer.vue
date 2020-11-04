@@ -13,7 +13,7 @@
             <router-link to="api">API</router-link>
           </li>
           <li class="list-inline-item">
-            <a href="mailto:hey@deepjyoti30.dev">Contact</a>
+            <a href="mailto:hello@deepjyoti30.dev">Contact</a>
           </li>
         </ul>
       </div>
