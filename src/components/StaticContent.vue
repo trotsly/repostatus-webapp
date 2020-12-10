@@ -121,7 +121,7 @@ export default {
       background: $grey;
       padding: 10px 5px;
       @extend .rounded-cust-sm;
-      color: $salmon;
+      color: $black;
       margin: 1.5em 0;
 
       code {
@@ -134,10 +134,11 @@ export default {
     }
 
     blockquote {
-      @extend .rounded-cust-sm;
-
       margin: 2em 0;
-      background: $green;
+      background: $silk;
+      border-left: 5px solid $salmon;
+      padding: 0.5em 0;
+      padding-left: 0.5em;
 
       p {
         margin: 10px;
