@@ -42,6 +42,11 @@ const routes = [
     component: () => import("../views/API.vue")
   },
   {
+    path: "/optimum-status",
+    name: "Optimum Status",
+    component: () => import("../views/OptimumStatus.vue")
+  },
+  {
     path: "*",
     name: "Not Found",
     component: () => import("../views/PageNotFound.vue")

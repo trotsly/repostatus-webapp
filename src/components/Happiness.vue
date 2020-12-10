@@ -30,7 +30,7 @@
       />
     </div>
     <h6 class="text-left mt-5 ml-3">
-      <router-link to="" class="text-muted"
+      <router-link to="optimum-status" class="text-muted"
         >What is an optimum status?</router-link
       >
     </h6>
