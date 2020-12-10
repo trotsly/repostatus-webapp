@@ -29,6 +29,11 @@
         class="status-each-el"
       />
     </div>
+    <h6 class="text-left mt-5 ml-3">
+      <router-link to="" class="text-muted"
+        >What is an optimum status?</router-link
+      >
+    </h6>
   </div>
 </template>
 
