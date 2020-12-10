@@ -15,18 +15,27 @@
     </div>
     <div v-else class="content">
       <h5 class="sub-text">Your repo's happiness status is</h5>
-      <h1 class="content-status">{{ getStatus }}</h1>
+      <h1 class="content-status">
+        {{ getStatus }}
+        <span class="info-button">
+          <router-link to="optimum-status" class="text-muted"
+            ><InfoIcon size="15"
+          /></router-link>
+        </span>
+      </h1>
     </div>
   </div>
 </template>
 
 <script>
 import { HalfCircleSpinner } from "epic-spinners";
+import { InfoIcon } from "vue-feather-icons";
 
 export default {
   name: "HappinessStatus",
   components: {
-    HalfCircleSpinner
+    HalfCircleSpinner,
+    InfoIcon
   },
   props: {
     status: {
@@ -98,6 +107,11 @@ export default {
       color: $ming;
       text-transform: uppercase;
       margin-top: 0.5em;
+    }
+
+    .info-button {
+      position: relative;
+      top: -15px;
     }
   }
 }
