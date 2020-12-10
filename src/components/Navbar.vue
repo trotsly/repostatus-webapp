@@ -2,7 +2,9 @@
   <div id="nav" v-if="['NotFound'].indexOf($route.name)">
     <div class="top-bar">
       <div class="brand">
-        <img src="/img/logo_large.png" alt="logo" height="30" />
+        <router-link to="/">
+          <img src="/img/logo_large.png" alt="logo" height="30" />
+        </router-link>
       </div>
       <div class="links">
         <router-link to="/">Home</router-link>
